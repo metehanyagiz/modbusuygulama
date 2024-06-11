@@ -10,7 +10,7 @@ namespace modbusuygulama
     {
         private IModbusMaster master;
         private TcpClient tcpClient;
-        private SerialPort serialPort;
+       
         public Form1()
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace modbusuygulama
             {
                 string ipaddress = txtipaddress.Text;
                 lblipaddress.Text = ipaddress;
-                int port = 502;
+                int port = int.Parse(txtport.Text);
                 tcpClient = new TcpClient(ipaddress, port);
                 master = ModbusIpMaster.CreateIp(tcpClient);
 
@@ -55,6 +55,29 @@ namespace modbusuygulama
         }
 
         private void btnread_Click(object sender, EventArgs e)
+
+
+        {
+            if (rbholding.Checked)
+            {
+                readregister("holding");
+
+            }
+            else if (rbinput.Checked)
+            {
+                readregister("input");
+            }
+            else if (rbcoil.Checked)
+            {
+                readregister("coil");
+
+            }
+            else if (rbdiscrete.Checked)
+            {
+                readregister("discrete");
+            }
+        }
+        private void readregister(string type)
         {
             try
             {
@@ -62,18 +85,133 @@ namespace modbusuygulama
                 {
                     MessageBox.Show("Not connected to any Modbus device.");
                     return;
-
                 }
                 byte slaveId = 1;
                 ushort startAddress = 0;
                 ushort numberofpoints = 1;
-                ushort[] registers = master.ReadHoldingRegisters(slaveId, startAddress, numberofpoints);
-                txtdata.Text = string.Join(", ", registers);
+                ushort[] registers;
+                bool[] values;
+
+                if(type == "holding"){
+                    registers = master.ReadHoldingRegisters(slaveId, startAddress, numberofpoints);
+                    txtdata.Text = string.Join(", ", registers);
+                }
+                else if(type =="input")
+                {
+                    registers = master.ReadInputRegisters(slaveId, startAddress, numberofpoints);
+                    txtdata.Text = string.Join(", ", registers);
+                }
+                else if(type == "coil")
+                {
+                    values= master.ReadCoils(slaveId,startAddress, numberofpoints);
+                    txtdata.Text= string.Join(", ", values);
+                }
+                else if (type == "discrete")
+                {
+                    values= master.ReadInputs(slaveId, startAddress, numberofpoints);
+                    txtdata.Text= string.Join (", ", values);
+                }
+            }
+            catch(Exception ex) { 
+                MessageBox.Show($"Error: {ex.Message}"); }
+
+        }
+            
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnwritecoil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (master == null)
+                {
+                    MessageBox.Show("Not connected to any Modbus device.");
+                    return;
+                }
+
+                byte slaveId = 1;
+                ushort coiladdress = 0;
+                bool coilvalue = true;
+                master.WriteSingleCoil(slaveId, coiladdress, coilvalue);
+                MessageBox.Show("Coil written succesfully");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show($"Error:{ex.Message}");
             }
+        }
+
+        private void btnwriteregister_Click(object sender, EventArgs e)
+        {
+            
+            
+                if (master == null)
+                {
+                    MessageBox.Show("Not connected to any Modbus device.");
+                    return;
+                }
+
+                byte slaveId = 1;
+                ushort registeraddress = 0;
+                ushort registervalue = ushort.Parse(txtregister.Text);
+                master.WriteSingleRegister(slaveId, registeraddress, registervalue);
+                MessageBox.Show("Register written succesfully.");
+                
+            
+            
+           
+        }
+
+        private void rbcoil_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbholding_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbinput_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbdiscrete_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (master == null)
+                {
+                    MessageBox.Show("Not connected to any Modbus device.");
+                    return;
+                }
+
+                byte slaveId = 1;
+                ushort coiladdress = 0;
+                bool coilvalue = false;
+                master.WriteSingleCoil(slaveId, coiladdress, coilvalue);
+                MessageBox.Show("Coil written succesfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error:{ex.Message}");
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
+
+
