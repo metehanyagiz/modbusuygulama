@@ -4,6 +4,8 @@ using System.IO;
 using System.IO.Ports;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using System.Text.Json;
+
 
 namespace modbusuygulama
 {
@@ -123,7 +125,32 @@ namespace modbusuygulama
                 MessageBox.Show($"Error: {ex.Message}"); }
 
         }
-            
+        private void saveconfig(string filepath)
+        {
+            var config = new Config
+            {
+                ipcnfg = txtipaddress.Text,
+                portcnfg = txtport.Text,
+                registercnfg = txtregister.Text,
+            };
+            string jsonstring= JsonSerializer.Serialize(config);
+            File.WriteAllText(filepath, jsonstring);
+        }
+        private void loadconfig(string filepath)
+        {
+            string jsonstring= File.ReadAllText(filepath);
+            var config=JsonSerializer.Deserialize<Config>(jsonstring);
+
+            txtipaddress.Text = config.ipcnfg;
+            txtport.Text = config.portcnfg;
+            txtregister.Text=config.registercnfg;
+        }
+        public class Config
+        {
+            public string ipcnfg { get; set; }
+            public string portcnfg { get; set; }
+            public string registercnfg { get; set; }
+        }    
         private void label5_Click(object sender, EventArgs e)
         {
 
@@ -263,6 +290,27 @@ namespace modbusuygulama
         private void btnviewlog_Click(object sender, EventArgs e)
         {
             txtlog.Text = Logger.readlog();
+        }
+
+        private void btnsavecnfg_Click(object sender, EventArgs e)
+        {
+            string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "config.json");
+            saveconfig(filepath);
+            Logger.Log("Configuration saved to "+ filepath);
+        }
+
+        private void btnloadcnfg_Click(object sender, EventArgs e)
+        {
+            string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "config.json");
+            if (File.Exists(filepath))
+            {
+                loadconfig(filepath);
+                Logger.Log("Configuration loaded from " + filepath);
+            }
+            else
+            {
+                MessageBox.Show("Configuration file not found.");
+            }
         }
     }
     public static class Logger

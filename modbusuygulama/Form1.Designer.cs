@@ -70,6 +70,8 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnviewlog = new System.Windows.Forms.Button();
             this.txtlog = new System.Windows.Forms.TextBox();
+            this.btnsavecnfg = new System.Windows.Forms.Button();
+            this.btnloadcnfg = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -529,11 +531,33 @@
             this.txtlog.Size = new System.Drawing.Size(250, 295);
             this.txtlog.TabIndex = 41;
             // 
+            // btnsavecnfg
+            // 
+            this.btnsavecnfg.Location = new System.Drawing.Point(802, 80);
+            this.btnsavecnfg.Name = "btnsavecnfg";
+            this.btnsavecnfg.Size = new System.Drawing.Size(106, 23);
+            this.btnsavecnfg.TabIndex = 42;
+            this.btnsavecnfg.Text = "Save config";
+            this.btnsavecnfg.UseVisualStyleBackColor = true;
+            this.btnsavecnfg.Click += new System.EventHandler(this.btnsavecnfg_Click);
+            // 
+            // btnloadcnfg
+            // 
+            this.btnloadcnfg.Location = new System.Drawing.Point(802, 109);
+            this.btnloadcnfg.Name = "btnloadcnfg";
+            this.btnloadcnfg.Size = new System.Drawing.Size(106, 23);
+            this.btnloadcnfg.TabIndex = 43;
+            this.btnloadcnfg.Text = "Load config";
+            this.btnloadcnfg.UseVisualStyleBackColor = true;
+            this.btnloadcnfg.Click += new System.EventHandler(this.btnloadcnfg_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(989, 767);
+            this.Controls.Add(this.btnloadcnfg);
+            this.Controls.Add(this.btnsavecnfg);
             this.Controls.Add(this.txtlog);
             this.Controls.Add(this.btnviewlog);
             this.Controls.Add(this.groupBox6);
@@ -611,6 +635,8 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnviewlog;
         private System.Windows.Forms.TextBox txtlog;
+        private System.Windows.Forms.Button btnsavecnfg;
+        private System.Windows.Forms.Button btnloadcnfg;
     }
 }
 
