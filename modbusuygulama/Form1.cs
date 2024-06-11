@@ -1,11 +1,13 @@
 ﻿using Modbus.Device;
 using System;
+using System.IO;
 using System.IO.Ports;
 using System.Net.Sockets;
 using System.Windows.Forms;
 
 namespace modbusuygulama
 {
+    
     public partial class Form1 : Form
     {
         private IModbusMaster master;
@@ -45,7 +47,7 @@ namespace modbusuygulama
                 int port = int.Parse(txtport.Text);
                 tcpClient = new TcpClient(ipaddress, port);
                 master = ModbusIpMaster.CreateIp(tcpClient);
-
+                Logger.Log("Connected to Modbus device at "+ ipaddress+":"+ port );
 
                 lblconnection.Text = "Connected";
                 MessageBox.Show("Connected successfully");
@@ -55,6 +57,7 @@ namespace modbusuygulama
 
                 lblconnection.Text = "Not Connected";
                 MessageBox.Show($"Error: {ex.Message}");
+                Logger.Log("An error occured while connecting to Modbus device: " + ex.Message);
             }
         }
 
@@ -255,6 +258,26 @@ namespace modbusuygulama
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+
+        private void btnviewlog_Click(object sender, EventArgs e)
+        {
+            txtlog.Text = Logger.readlog();
+        }
+    }
+    public static class Logger
+    {
+        private static string logfilepath = "application.log";
+        public static void Log(string message)
+        {
+            using (StreamWriter writer = new StreamWriter(logfilepath, true))
+            {
+                writer.WriteLine($"{DateTime.Now}:{message}");
+            }
+        }
+        public static string readlog()
+        {
+            return File.ReadAllText(logfilepath);
         }
     }
 }

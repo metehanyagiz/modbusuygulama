@@ -68,6 +68,8 @@
             this.txtregister = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnviewlog = new System.Windows.Forms.Button();
+            this.txtlog = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -299,7 +301,7 @@
             // 
             // txtipaddress
             // 
-            this.txtipaddress.ForeColor = System.Drawing.Color.DarkSeaGreen;
+            this.txtipaddress.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtipaddress.Location = new System.Drawing.Point(67, 63);
             this.txtipaddress.Name = "txtipaddress";
             this.txtipaddress.Size = new System.Drawing.Size(132, 22);
@@ -508,11 +510,32 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Step 2b";
             // 
+            // btnviewlog
+            // 
+            this.btnviewlog.Location = new System.Drawing.Point(686, 106);
+            this.btnviewlog.Name = "btnviewlog";
+            this.btnviewlog.Size = new System.Drawing.Size(83, 23);
+            this.btnviewlog.TabIndex = 40;
+            this.btnviewlog.Text = "View Log";
+            this.btnviewlog.UseVisualStyleBackColor = true;
+            this.btnviewlog.Click += new System.EventHandler(this.btnviewlog_Click);
+            // 
+            // txtlog
+            // 
+            this.txtlog.Location = new System.Drawing.Point(686, 149);
+            this.txtlog.Multiline = true;
+            this.txtlog.Name = "txtlog";
+            this.txtlog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtlog.Size = new System.Drawing.Size(250, 295);
+            this.txtlog.TabIndex = 41;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 767);
+            this.ClientSize = new System.Drawing.Size(989, 767);
+            this.Controls.Add(this.txtlog);
+            this.Controls.Add(this.btnviewlog);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -586,6 +609,8 @@
         private System.Windows.Forms.TextBox txtregister;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnviewlog;
+        private System.Windows.Forms.TextBox txtlog;
     }
 }
 
