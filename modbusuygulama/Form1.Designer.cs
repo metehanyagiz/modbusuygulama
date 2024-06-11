@@ -227,6 +227,7 @@
             this.btndriverfw.TabIndex = 13;
             this.btndriverfw.Text = "Update Driver FW";
             this.btndriverfw.UseVisualStyleBackColor = true;
+            this.btndriverfw.Click += new System.EventHandler(this.btndriverfw_Click);
             // 
             // label3
             // 
@@ -347,6 +348,7 @@
             this.txtport.Name = "txtport";
             this.txtport.Size = new System.Drawing.Size(48, 22);
             this.txtport.TabIndex = 23;
+            this.txtport.TextChanged += new System.EventHandler(this.txtport_TextChanged);
             // 
             // label6
             // 
@@ -522,6 +524,8 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "SentiPort v1.0.0";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

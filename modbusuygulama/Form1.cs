@@ -15,11 +15,15 @@ namespace modbusuygulama
         {
             InitializeComponent();
             lblconnection.Text = "Disconnected";
+            this.FormClosing += new FormClosingEventHandler(Form1_Load);
+            this.Load += new EventHandler(Form1_Load);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            txtipaddress.Text = Properties.Settings.Default.ipadresi;
+            txtport.Text = Properties.Settings.Default.portdeger;
+            txtregister.Text = Properties.Settings.Default.registervalue;
         }
 
         private void combochannel_SelectedIndexChanged(object sender, EventArgs e)
@@ -208,6 +212,36 @@ namespace modbusuygulama
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show("Do you want to keep your current values for next time?", "Save Settings", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+
+
+                Properties.Settings.Default.ipadresi = txtipaddress.Text;
+                Properties.Settings.Default.portdeger = txtport.Text;
+                Properties.Settings.Default.registervalue = txtregister.Text;
+                Properties.Settings.Default.Save();
+            }
+            else { }
+            }
+
+        private void btndriverfw_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtport_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
 
         }
