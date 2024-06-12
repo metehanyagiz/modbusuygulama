@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.lblipaddress = new System.Windows.Forms.Label();
@@ -59,6 +60,8 @@
             this.btnwritetrue = new System.Windows.Forms.Button();
             this.btnwriteregister = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnloadcnfg = new System.Windows.Forms.Button();
+            this.btnsavecnfg = new System.Windows.Forms.Button();
             this.rbholding = new System.Windows.Forms.RadioButton();
             this.rbdiscrete = new System.Windows.Forms.RadioButton();
             this.rbcoil = new System.Windows.Forms.RadioButton();
@@ -70,8 +73,11 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnviewlog = new System.Windows.Forms.Button();
             this.txtlog = new System.Windows.Forms.TextBox();
-            this.btnsavecnfg = new System.Windows.Forms.Button();
-            this.btnloadcnfg = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblrefresh = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.chkautorefresh = new System.Windows.Forms.CheckBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -79,6 +85,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -251,7 +258,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox1.Location = new System.Drawing.Point(16, 95);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 218);
+            this.groupBox1.Size = new System.Drawing.Size(200, 220);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             // 
@@ -395,6 +402,8 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.btnloadcnfg);
+            this.groupBox4.Controls.Add(this.btnsavecnfg);
             this.groupBox4.Controls.Add(this.btnconnect);
             this.groupBox4.Controls.Add(this.txtipaddress);
             this.groupBox4.Controls.Add(this.txtport);
@@ -406,6 +415,26 @@
             this.groupBox4.TabIndex = 31;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Step 1";
+            // 
+            // btnloadcnfg
+            // 
+            this.btnloadcnfg.Location = new System.Drawing.Point(59, 219);
+            this.btnloadcnfg.Name = "btnloadcnfg";
+            this.btnloadcnfg.Size = new System.Drawing.Size(106, 23);
+            this.btnloadcnfg.TabIndex = 43;
+            this.btnloadcnfg.Text = "Load config";
+            this.btnloadcnfg.UseVisualStyleBackColor = true;
+            this.btnloadcnfg.Click += new System.EventHandler(this.btnloadcnfg_Click);
+            // 
+            // btnsavecnfg
+            // 
+            this.btnsavecnfg.Location = new System.Drawing.Point(59, 190);
+            this.btnsavecnfg.Name = "btnsavecnfg";
+            this.btnsavecnfg.Size = new System.Drawing.Size(106, 23);
+            this.btnsavecnfg.TabIndex = 42;
+            this.btnsavecnfg.Text = "Save config";
+            this.btnsavecnfg.UseVisualStyleBackColor = true;
+            this.btnsavecnfg.Click += new System.EventHandler(this.btnsavecnfg_Click);
             // 
             // rbholding
             // 
@@ -422,7 +451,7 @@
             // rbdiscrete
             // 
             this.rbdiscrete.AutoSize = true;
-            this.rbdiscrete.Location = new System.Drawing.Point(151, 58);
+            this.rbdiscrete.Location = new System.Drawing.Point(161, 57);
             this.rbdiscrete.Name = "rbdiscrete";
             this.rbdiscrete.Size = new System.Drawing.Size(109, 20);
             this.rbdiscrete.TabIndex = 33;
@@ -434,7 +463,7 @@
             // rbcoil
             // 
             this.rbcoil.AutoSize = true;
-            this.rbcoil.Location = new System.Drawing.Point(151, 28);
+            this.rbcoil.Location = new System.Drawing.Point(161, 28);
             this.rbcoil.Name = "rbcoil";
             this.rbcoil.Size = new System.Drawing.Size(51, 20);
             this.rbcoil.TabIndex = 34;
@@ -514,52 +543,79 @@
             // 
             // btnviewlog
             // 
-            this.btnviewlog.Location = new System.Drawing.Point(686, 106);
+            this.btnviewlog.Location = new System.Drawing.Point(169, 326);
             this.btnviewlog.Name = "btnviewlog";
             this.btnviewlog.Size = new System.Drawing.Size(83, 23);
             this.btnviewlog.TabIndex = 40;
-            this.btnviewlog.Text = "View Log";
+            this.btnviewlog.Text = "Initialize";
             this.btnviewlog.UseVisualStyleBackColor = true;
             this.btnviewlog.Click += new System.EventHandler(this.btnviewlog_Click);
             // 
             // txtlog
             // 
-            this.txtlog.Location = new System.Drawing.Point(686, 149);
+            this.txtlog.Location = new System.Drawing.Point(6, 21);
             this.txtlog.Multiline = true;
             this.txtlog.Name = "txtlog";
             this.txtlog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtlog.Size = new System.Drawing.Size(250, 295);
             this.txtlog.TabIndex = 41;
             // 
-            // btnsavecnfg
+            // timer1
             // 
-            this.btnsavecnfg.Location = new System.Drawing.Point(802, 80);
-            this.btnsavecnfg.Name = "btnsavecnfg";
-            this.btnsavecnfg.Size = new System.Drawing.Size(106, 23);
-            this.btnsavecnfg.TabIndex = 42;
-            this.btnsavecnfg.Text = "Save config";
-            this.btnsavecnfg.UseVisualStyleBackColor = true;
-            this.btnsavecnfg.Click += new System.EventHandler(this.btnsavecnfg_Click);
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnloadcnfg
+            // lblrefresh
             // 
-            this.btnloadcnfg.Location = new System.Drawing.Point(802, 109);
-            this.btnloadcnfg.Name = "btnloadcnfg";
-            this.btnloadcnfg.Size = new System.Drawing.Size(106, 23);
-            this.btnloadcnfg.TabIndex = 43;
-            this.btnloadcnfg.Text = "Load config";
-            this.btnloadcnfg.UseVisualStyleBackColor = true;
-            this.btnloadcnfg.Click += new System.EventHandler(this.btnloadcnfg_Click);
+            this.lblrefresh.AutoSize = true;
+            this.lblrefresh.Location = new System.Drawing.Point(100, 329);
+            this.lblrefresh.Name = "lblrefresh";
+            this.lblrefresh.Size = new System.Drawing.Size(44, 16);
+            this.lblrefresh.TabIndex = 44;
+            this.lblrefresh.Text = "Never";
+            this.lblrefresh.Click += new System.EventHandler(this.lblrefresh_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 329);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(91, 16);
+            this.label9.TabIndex = 45;
+            this.label9.Text = "Next refresh in";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // chkautorefresh
+            // 
+            this.chkautorefresh.AutoSize = true;
+            this.chkautorefresh.Location = new System.Drawing.Point(6, 355);
+            this.chkautorefresh.Name = "chkautorefresh";
+            this.chkautorefresh.Size = new System.Drawing.Size(171, 20);
+            this.chkautorefresh.TabIndex = 46;
+            this.chkautorefresh.Text = "Auto scroll log to bottom";
+            this.chkautorefresh.UseVisualStyleBackColor = true;
+            this.chkautorefresh.CheckedChanged += new System.EventHandler(this.chkautorefresh_CheckedChanged);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.txtlog);
+            this.groupBox7.Controls.Add(this.chkautorefresh);
+            this.groupBox7.Controls.Add(this.lblrefresh);
+            this.groupBox7.Controls.Add(this.label9);
+            this.groupBox7.Controls.Add(this.btnviewlog);
+            this.groupBox7.Location = new System.Drawing.Point(702, 101);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(275, 396);
+            this.groupBox7.TabIndex = 48;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Log";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(989, 767);
-            this.Controls.Add(this.btnloadcnfg);
-            this.Controls.Add(this.btnsavecnfg);
-            this.Controls.Add(this.txtlog);
-            this.Controls.Add(this.btnviewlog);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -587,6 +643,8 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -637,6 +695,11 @@
         private System.Windows.Forms.TextBox txtlog;
         private System.Windows.Forms.Button btnsavecnfg;
         private System.Windows.Forms.Button btnloadcnfg;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblrefresh;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox chkautorefresh;
+        private System.Windows.Forms.GroupBox groupBox7;
     }
 }
 

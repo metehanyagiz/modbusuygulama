@@ -5,6 +5,7 @@ using System.IO.Ports;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using System.Text.Json;
+using System.Threading;
 
 
 namespace modbusuygulama
@@ -14,6 +15,7 @@ namespace modbusuygulama
     {
         private IModbusMaster master;
         private TcpClient tcpClient;
+        private int countdown;
        
         public Form1()
         {
@@ -21,6 +23,9 @@ namespace modbusuygulama
             lblconnection.Text = "Disconnected";
             this.FormClosing += new FormClosingEventHandler(Form1_Load);
             this.Load += new EventHandler(Form1_Load);
+            countdown = 5;
+            timer1.Tick += new EventHandler(timer1_Tick);
+            chkautorefresh.CheckedChanged += new EventHandler(chkautorefresh_CheckedChanged);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -289,7 +294,23 @@ namespace modbusuygulama
 
         private void btnviewlog_Click(object sender, EventArgs e)
         {
-            txtlog.Text = Logger.readlog();
+            scrolllog();
+            timer1.Start();
+            lblrefresh.Text= countdown.ToString();
+            countdown = 5;
+            btnviewlog.Visible = false;
+            
+        }
+
+        private void scrolllog()
+        {
+            txtlog.Text= Logger.readlog();
+            if(chkautorefresh.Checked )
+            {
+                txtlog.SelectionStart = txtlog.Text.Length;
+                txtlog.ScrollToCaret();
+            }
+
         }
 
         private void btnsavecnfg_Click(object sender, EventArgs e)
@@ -312,6 +333,37 @@ namespace modbusuygulama
                 MessageBox.Show("Configuration file not found.");
             }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (countdown <= 0)
+            {
+                scrolllog();
+                countdown=5;
+            }
+            else
+            {
+                countdown--;
+            }
+            lblrefresh.Text = countdown.ToString();
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblrefresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkautorefresh_CheckedChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        
     }
     public static class Logger
     {
