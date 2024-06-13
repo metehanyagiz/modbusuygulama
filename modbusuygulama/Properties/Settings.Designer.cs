@@ -106,5 +106,17 @@ namespace modbusuygulama.Properties {
                 this["anaadres"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string anadegerler {
+            get {
+                return ((string)(this["anadegerler"]));
+            }
+            set {
+                this["anadegerler"] = value;
+            }
+        }
     }
 }

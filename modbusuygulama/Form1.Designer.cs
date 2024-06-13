@@ -91,6 +91,7 @@
             this.btnmainwrite = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnreset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -320,12 +321,13 @@
             // 
             // btnconnect
             // 
+            this.btnconnect.BackColor = System.Drawing.Color.Green;
             this.btnconnect.Location = new System.Drawing.Point(43, 165);
             this.btnconnect.Name = "btnconnect";
             this.btnconnect.Size = new System.Drawing.Size(156, 42);
             this.btnconnect.TabIndex = 9;
             this.btnconnect.Text = "Connect";
-            this.btnconnect.UseVisualStyleBackColor = true;
+            this.btnconnect.UseVisualStyleBackColor = false;
             this.btnconnect.Click += new System.EventHandler(this.btnconnect_Click);
             // 
             // txtipaddress
@@ -403,12 +405,13 @@
             // 
             // btndisconnect
             // 
+            this.btndisconnect.BackColor = System.Drawing.Color.Red;
             this.btndisconnect.Location = new System.Drawing.Point(43, 220);
             this.btndisconnect.Name = "btndisconnect";
             this.btndisconnect.Size = new System.Drawing.Size(156, 44);
             this.btndisconnect.TabIndex = 47;
             this.btndisconnect.Text = "Disconnect";
-            this.btndisconnect.UseVisualStyleBackColor = true;
+            this.btndisconnect.UseVisualStyleBackColor = false;
             this.btndisconnect.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // txtslaveid
@@ -666,7 +669,7 @@
             this.groupBox8.Controls.Add(this.txtclear);
             this.groupBox8.Controls.Add(this.txtcopyclip);
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox8.Location = new System.Drawing.Point(558, 197);
+            this.groupBox8.Location = new System.Drawing.Point(520, 197);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(300, 487);
             this.groupBox8.TabIndex = 52;
@@ -685,12 +688,13 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1017, 778);
+            this.tabControl1.Size = new System.Drawing.Size(942, 778);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 53;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnreset);
             this.tabPage2.Controls.Add(this.groupBox9);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.btnread);
@@ -700,7 +704,7 @@
             this.tabPage2.Location = new System.Drawing.Point(104, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(909, 770);
+            this.tabPage2.Size = new System.Drawing.Size(834, 770);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Modbus";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -791,12 +795,23 @@
             this.tabPage3.Text = "Deneme Özellikleri";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnreset
+            // 
+            this.btnreset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnreset.Location = new System.Drawing.Point(713, 690);
+            this.btnreset.Name = "btnreset";
+            this.btnreset.Size = new System.Drawing.Size(107, 49);
+            this.btnreset.TabIndex = 56;
+            this.btnreset.Text = "RESET";
+            this.btnreset.UseVisualStyleBackColor = false;
+            this.btnreset.Click += new System.EventHandler(this.btnreset_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1037, 843);
+            this.ClientSize = new System.Drawing.Size(965, 843);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox3);
@@ -893,6 +908,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button btnreset;
     }
 }
 

@@ -80,6 +80,7 @@ namespace modbusuygulama
             txtnopoint.Text = Properties.Settings.Default.numberofpoi;
             txtstartadd.Text = Properties.Settings.Default.startadresi;
             txtslaveid.Text = Properties.Settings.Default.slavid;
+            txtmainwrite.Text = Properties.Settings.Default.anadegerler;
         }
 
         private void combochannel_SelectedIndexChanged(object sender, EventArgs e)
@@ -248,6 +249,7 @@ namespace modbusuygulama
                 nopointcnfg = txtnopoint.Text,
                 startaddcnfg = txtstartadd.Text,
                 slaveidcnfg = txtslaveid.Text,
+                anadegerlercnfg=txtmainwrite.Text,
             };
             string jsonstring= JsonSerializer.Serialize(config);
             File.WriteAllText(filepath, jsonstring);
@@ -263,6 +265,7 @@ namespace modbusuygulama
             txtnopoint.Text=config.nopointcnfg;
             txtstartadd.Text=config.startaddcnfg;
             txtslaveid.Text=config.slaveidcnfg;
+            txtmainwrite.Text = config.anadegerlercnfg;
         }
         public class Config
         {
@@ -272,6 +275,7 @@ namespace modbusuygulama
             public string startaddcnfg { get; set; }
             public string slaveidcnfg {  get; set; }
             public string anaadrescnfg {  get; set; }
+            public string anadegerlercnfg {  get; set; }
         }    
         private void label5_Click(object sender, EventArgs e)
         {
@@ -315,7 +319,7 @@ namespace modbusuygulama
                 if (result == DialogResult.Yes)
                 {
 
-
+                    Properties.Settings.Default.anadegerler = txtmainwrite.Text;
                     Properties.Settings.Default.ipadresi = txtipaddress.Text;
                     Properties.Settings.Default.portdeger = txtport.Text;
                     Properties.Settings.Default.anaadres = txtaddressbox.Text;
@@ -326,17 +330,19 @@ namespace modbusuygulama
                 }
                 else
                 {
+                    Properties.Settings.Default.anadegerler = null;
                     Properties.Settings.Default.ipadresi = null;
                     Properties.Settings.Default.portdeger = null;
                     Properties.Settings.Default.anaadres=null;
                     Properties.Settings.Default.numberofpoi = null;
                     Properties.Settings.Default.startadresi = null;
-                    Properties.Settings.Default.slavid = null;
+
                     Properties.Settings.Default.Save();
                 }
             }
             else
             {
+                Properties.Settings.Default.anadegerler = txtmainwrite.Text;
                 Properties.Settings.Default.ipadresi = txtipaddress.Text;
                 Properties.Settings.Default.portdeger = txtport.Text;
                 Properties.Settings.Default.anaadres = txtaddressbox.Text;
@@ -645,6 +651,17 @@ namespace modbusuygulama
 
         private void txtnopoint_TextChanged(object sender, EventArgs e)
         {
+
+        }
+        //reset tuşu
+        private void btnreset_Click(object sender, EventArgs e)
+        {
+            txtmainwrite.Text = string.Empty;
+            txtipaddress.Text = string.Empty;
+            txtport.Text    = string.Empty;
+            txtaddressbox.Text = string.Empty;
+            txtnopoint.Text = string.Empty;
+            txtstartadd.Text = string.Empty;
 
         }
     }
