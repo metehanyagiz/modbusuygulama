@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using System.Text.Json;
 using System.Threading;
+using System.Text;
 
 
 namespace modbusuygulama
@@ -113,28 +114,80 @@ namespace modbusuygulama
 
                 if(type == "holding"){
                     registers = master.ReadHoldingRegisters(slaveId, startAddress, numberofpoints);
-                    txtdata.Text = string.Join(", ", registers);
+
+                    
+                    StringBuilder sonucsirala = new StringBuilder();
+                    sonucsirala.Append($"Register values at address {startAddress} - {startAddress+numberofpoints}: ");
+                    sonucsirala.AppendLine();
+                    for (int i = 0; i< registers.Length; i++)
+                    {
+                        sonucsirala.AppendLine($"Register {startAddress+i}: {registers[i]}");
+
+
+                    }
+
+                    txtoutput.AppendText(sonucsirala.ToString());
+                    lastregisterreading=sonucsirala.ToString();
+
                 }
                 else if(type =="input")
                 {
                     registers = master.ReadInputRegisters(slaveId, startAddress, numberofpoints);
-                    txtdata.Text = string.Join(", ", registers);
+
+
+                    StringBuilder sonucsirala = new StringBuilder();
+                    sonucsirala.Append($"Register values at address {startAddress} - {startAddress + numberofpoints}: ");
+                    sonucsirala.AppendLine();
+                    for (int i = 0; i < registers.Length; i++)
+                    {
+                        sonucsirala.AppendLine($"Register {startAddress + i}: {registers[i]}");
+
+
+                    }
+                    txtoutput.AppendText(sonucsirala.ToString());
+                    lastregisterreading = sonucsirala.ToString();
+
                 }
                 else if(type == "coil")
                 {
                     values= master.ReadCoils(slaveId,startAddress, numberofpoints);
-                    txtdata.Text= string.Join(", ", values);
+
+
+                    StringBuilder sonucsirala = new StringBuilder();
+                    sonucsirala.Append($"Coil values at address {startAddress} - {startAddress + numberofpoints}: ");
+                    sonucsirala.AppendLine();
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        sonucsirala.AppendLine($"Register {startAddress + i}: {values[i]}");
+
+
+                    }
+                    txtoutput.AppendText(sonucsirala.ToString());
+                    lastregisterreading = sonucsirala.ToString();
                 }
                 else if (type == "discrete")
                 {
                     values= master.ReadInputs(slaveId, startAddress, numberofpoints);
-                    txtdata.Text= string.Join (", ", values);
+
+                    StringBuilder sonucsirala = new StringBuilder();
+                    sonucsirala.Append($"Coil values at address {startAddress} - {startAddress + numberofpoints}: ");
+                    sonucsirala.AppendLine();
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        sonucsirala.AppendLine($"Register {startAddress + i}: {values[i]}");
+
+
+                    }
+                    txtoutput.AppendText(sonucsirala.ToString());
+                    lastregisterreading = sonucsirala.ToString();
                 }
             }
             catch(Exception ex) { 
                 MessageBox.Show($"Error: {ex.Message}"); }
 
         }
+
+        private string lastregisterreading = string.Empty;
         private void saveconfig(string filepath)
         {
             var config = new Config
@@ -411,6 +464,49 @@ namespace modbusuygulama
         }
 
         private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtdata_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtoutput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtcopyclip_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(lastregisterreading))
+                    {
+                    Clipboard.SetText(lastregisterreading);
+                    MessageBox.Show("Register values copied to clipboard succesfully.");
+
+                }
+                else {
+                    MessageBox.Show("No register reading to copy.");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+        private void txtclear_Click(object sender, EventArgs e)
+        {
+            txtoutput.Clear();
+            lastregisterreading = string.Empty;
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

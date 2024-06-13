@@ -52,8 +52,6 @@
             this.txtipaddress = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnread = new System.Windows.Forms.Button();
-            this.txtdata = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtport = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -88,6 +86,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.chkautorefresh = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtoutput = new System.Windows.Forms.TextBox();
+            this.txtcopyclip = new System.Windows.Forms.Button();
+            this.txtclear = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -96,6 +98,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -301,12 +304,13 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(861, 847);
+            this.pictureBox1.Location = new System.Drawing.Point(849, 959);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 77);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnconnect
             // 
@@ -346,24 +350,6 @@
             this.btnread.Text = "Read ";
             this.btnread.UseVisualStyleBackColor = true;
             this.btnread.Click += new System.EventHandler(this.btnread_Click);
-            // 
-            // txtdata
-            // 
-            this.txtdata.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtdata.Location = new System.Drawing.Point(746, 603);
-            this.txtdata.Name = "txtdata";
-            this.txtdata.Size = new System.Drawing.Size(100, 22);
-            this.txtdata.TabIndex = 21;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(768, 584);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 16);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Reading";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtport
             // 
@@ -662,6 +648,7 @@
             this.txtlog.Location = new System.Drawing.Point(6, 21);
             this.txtlog.Multiline = true;
             this.txtlog.Name = "txtlog";
+            this.txtlog.ReadOnly = true;
             this.txtlog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtlog.Size = new System.Drawing.Size(250, 295);
             this.txtlog.TabIndex = 41;
@@ -716,17 +703,59 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Log";
             // 
+            // txtoutput
+            // 
+            this.txtoutput.Location = new System.Drawing.Point(17, 21);
+            this.txtoutput.Multiline = true;
+            this.txtoutput.Name = "txtoutput";
+            this.txtoutput.ReadOnly = true;
+            this.txtoutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtoutput.Size = new System.Drawing.Size(266, 277);
+            this.txtoutput.TabIndex = 49;
+            this.txtoutput.TextChanged += new System.EventHandler(this.txtoutput_TextChanged);
+            // 
+            // txtcopyclip
+            // 
+            this.txtcopyclip.Location = new System.Drawing.Point(17, 304);
+            this.txtcopyclip.Name = "txtcopyclip";
+            this.txtcopyclip.Size = new System.Drawing.Size(266, 23);
+            this.txtcopyclip.TabIndex = 50;
+            this.txtcopyclip.Text = "Copy last reading to the clipboard";
+            this.txtcopyclip.UseVisualStyleBackColor = true;
+            this.txtcopyclip.Click += new System.EventHandler(this.txtcopyclip_Click);
+            // 
+            // txtclear
+            // 
+            this.txtclear.Location = new System.Drawing.Point(17, 333);
+            this.txtclear.Name = "txtclear";
+            this.txtclear.Size = new System.Drawing.Size(266, 23);
+            this.txtclear.TabIndex = 51;
+            this.txtclear.Text = "Clear";
+            this.txtclear.UseVisualStyleBackColor = true;
+            this.txtclear.Click += new System.EventHandler(this.txtclear_Click);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.txtoutput);
+            this.groupBox8.Controls.Add(this.txtclear);
+            this.groupBox8.Controls.Add(this.txtcopyclip);
+            this.groupBox8.Location = new System.Drawing.Point(677, 503);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(300, 401);
+            this.groupBox8.TabIndex = 52;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Readings";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 926);
+            this.ClientSize = new System.Drawing.Size(989, 1048);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtdata);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -751,8 +780,9 @@
             this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -780,8 +810,6 @@
         private System.Windows.Forms.TextBox txtipaddress;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnread;
-        private System.Windows.Forms.TextBox txtdata;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtport;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -816,6 +844,10 @@
         private System.Windows.Forms.TextBox txtcoiladd;
         private System.Windows.Forms.TextBox txtregisteradd;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtoutput;
+        private System.Windows.Forms.Button txtcopyclip;
+        private System.Windows.Forms.Button txtclear;
+        private System.Windows.Forms.GroupBox groupBox8;
     }
 }
 
