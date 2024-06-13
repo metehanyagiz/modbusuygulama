@@ -142,6 +142,11 @@ namespace modbusuygulama
                 ipcnfg = txtipaddress.Text,
                 portcnfg = txtport.Text,
                 registercnfg = txtregister.Text,
+                coiladdcnfg = txtcoiladd.Text,
+                registeraddcnfg = txtregisteradd.Text,
+                nopointcnfg = txtnopoint.Text,
+                startaddcnfg = txtstartadd.Text,
+                slaveidcnfg = txtslaveid.Text,
             };
             string jsonstring= JsonSerializer.Serialize(config);
             File.WriteAllText(filepath, jsonstring);
@@ -154,12 +159,22 @@ namespace modbusuygulama
             txtipaddress.Text = config.ipcnfg;
             txtport.Text = config.portcnfg;
             txtregister.Text=config.registercnfg;
+            txtcoiladd.Text=config.coiladdcnfg;
+            txtregisteradd.Text=config.registeraddcnfg;
+            txtnopoint.Text=config.nopointcnfg;
+            txtstartadd.Text=config.startaddcnfg;
+            txtslaveid.Text=config.slaveidcnfg;
         }
         public class Config
         {
             public string ipcnfg { get; set; }
             public string portcnfg { get; set; }
             public string registercnfg { get; set; }
+            public string coiladdcnfg { get; set; }
+            public string registeraddcnfg { get; set; }
+            public string nopointcnfg {  get; set; }
+            public string startaddcnfg { get; set; }
+            public string slaveidcnfg {  get; set; }
         }    
         private void label5_Click(object sender, EventArgs e)
         {

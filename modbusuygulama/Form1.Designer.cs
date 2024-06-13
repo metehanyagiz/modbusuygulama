@@ -77,6 +77,8 @@
             this.txtregister = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtregisteradd = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtcoiladd = new System.Windows.Forms.TextBox();
             this.btnviewlog = new System.Windows.Forms.Button();
@@ -86,8 +88,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.chkautorefresh = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtregisteradd = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -313,7 +313,7 @@
             this.btnconnect.Location = new System.Drawing.Point(57, 223);
             this.btnconnect.Name = "btnconnect";
             this.btnconnect.Size = new System.Drawing.Size(115, 23);
-            this.btnconnect.TabIndex = 14;
+            this.btnconnect.TabIndex = 9;
             this.btnconnect.Text = "Connect";
             this.btnconnect.UseVisualStyleBackColor = true;
             this.btnconnect.Click += new System.EventHandler(this.btnconnect_Click);
@@ -342,7 +342,7 @@
             this.btnread.Location = new System.Drawing.Point(59, 97);
             this.btnread.Name = "btnread";
             this.btnread.Size = new System.Drawing.Size(165, 23);
-            this.btnread.TabIndex = 20;
+            this.btnread.TabIndex = 14;
             this.btnread.Text = "Read ";
             this.btnread.UseVisualStyleBackColor = true;
             this.btnread.Click += new System.EventHandler(this.btnread_Click);
@@ -370,7 +370,7 @@
             this.txtport.Location = new System.Drawing.Point(111, 97);
             this.txtport.Name = "txtport";
             this.txtport.Size = new System.Drawing.Size(100, 22);
-            this.txtport.TabIndex = 23;
+            this.txtport.TabIndex = 5;
             this.txtport.TextChanged += new System.EventHandler(this.txtport_TextChanged);
             // 
             // label6
@@ -393,10 +393,10 @@
             // 
             // btnwritetrue
             // 
-            this.btnwritetrue.Location = new System.Drawing.Point(28, 65);
+            this.btnwritetrue.Location = new System.Drawing.Point(16, 65);
             this.btnwritetrue.Name = "btnwritetrue";
-            this.btnwritetrue.Size = new System.Drawing.Size(111, 23);
-            this.btnwritetrue.TabIndex = 29;
+            this.btnwritetrue.Size = new System.Drawing.Size(123, 23);
+            this.btnwritetrue.TabIndex = 16;
             this.btnwritetrue.Text = "Write Coil True";
             this.btnwritetrue.UseVisualStyleBackColor = true;
             this.btnwritetrue.Click += new System.EventHandler(this.btnwritecoil_Click);
@@ -406,7 +406,7 @@
             this.btnwriteregister.Location = new System.Drawing.Point(110, 180);
             this.btnwriteregister.Name = "btnwriteregister";
             this.btnwriteregister.Size = new System.Drawing.Size(160, 23);
-            this.btnwriteregister.TabIndex = 30;
+            this.btnwriteregister.TabIndex = 20;
             this.btnwriteregister.Text = "Write Register";
             this.btnwriteregister.UseVisualStyleBackColor = true;
             this.btnwriteregister.Click += new System.EventHandler(this.btnwriteregister_Click);
@@ -439,21 +439,21 @@
             this.txtnopoint.Location = new System.Drawing.Point(111, 181);
             this.txtnopoint.Name = "txtnopoint";
             this.txtnopoint.Size = new System.Drawing.Size(100, 22);
-            this.txtnopoint.TabIndex = 49;
+            this.txtnopoint.TabIndex = 8;
             // 
             // txtstartadd
             // 
             this.txtstartadd.Location = new System.Drawing.Point(111, 153);
             this.txtstartadd.Name = "txtstartadd";
             this.txtstartadd.Size = new System.Drawing.Size(100, 22);
-            this.txtstartadd.TabIndex = 48;
+            this.txtstartadd.TabIndex = 7;
             // 
             // txtslaveid
             // 
             this.txtslaveid.Location = new System.Drawing.Point(111, 125);
             this.txtslaveid.Name = "txtslaveid";
             this.txtslaveid.Size = new System.Drawing.Size(100, 22);
-            this.txtslaveid.TabIndex = 47;
+            this.txtslaveid.TabIndex = 6;
             // 
             // label12
             // 
@@ -509,7 +509,7 @@
             this.rbholding.Location = new System.Drawing.Point(16, 28);
             this.rbholding.Name = "rbholding";
             this.rbholding.Size = new System.Drawing.Size(129, 20);
-            this.rbholding.TabIndex = 32;
+            this.rbholding.TabIndex = 10;
             this.rbholding.TabStop = true;
             this.rbholding.Text = "Holding Register";
             this.rbholding.UseVisualStyleBackColor = true;
@@ -521,7 +521,7 @@
             this.rbdiscrete.Location = new System.Drawing.Point(161, 57);
             this.rbdiscrete.Name = "rbdiscrete";
             this.rbdiscrete.Size = new System.Drawing.Size(109, 20);
-            this.rbdiscrete.TabIndex = 33;
+            this.rbdiscrete.TabIndex = 13;
             this.rbdiscrete.TabStop = true;
             this.rbdiscrete.Text = "Discrete Input";
             this.rbdiscrete.UseVisualStyleBackColor = true;
@@ -533,7 +533,7 @@
             this.rbcoil.Location = new System.Drawing.Point(161, 28);
             this.rbcoil.Name = "rbcoil";
             this.rbcoil.Size = new System.Drawing.Size(51, 20);
-            this.rbcoil.TabIndex = 34;
+            this.rbcoil.TabIndex = 11;
             this.rbcoil.TabStop = true;
             this.rbcoil.Text = "Coil";
             this.rbcoil.UseVisualStyleBackColor = true;
@@ -545,7 +545,7 @@
             this.rbinput.Location = new System.Drawing.Point(16, 57);
             this.rbinput.Name = "rbinput";
             this.rbinput.Size = new System.Drawing.Size(110, 20);
-            this.rbinput.TabIndex = 35;
+            this.rbinput.TabIndex = 12;
             this.rbinput.TabStop = true;
             this.rbinput.Text = "Input Register";
             this.rbinput.UseVisualStyleBackColor = true;
@@ -569,8 +569,8 @@
             // 
             this.btnwritefalse.Location = new System.Drawing.Point(145, 65);
             this.btnwritefalse.Name = "btnwritefalse";
-            this.btnwritefalse.Size = new System.Drawing.Size(113, 23);
-            this.btnwritefalse.TabIndex = 37;
+            this.btnwritefalse.Size = new System.Drawing.Size(124, 23);
+            this.btnwritefalse.TabIndex = 17;
             this.btnwritefalse.Text = "Write Coil False";
             this.btnwritefalse.UseVisualStyleBackColor = true;
             this.btnwritefalse.Click += new System.EventHandler(this.button1_Click);
@@ -581,7 +581,7 @@
             this.txtregister.Location = new System.Drawing.Point(137, 149);
             this.txtregister.Name = "txtregister";
             this.txtregister.Size = new System.Drawing.Size(132, 22);
-            this.txtregister.TabIndex = 26;
+            this.txtregister.TabIndex = 19;
             this.txtregister.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtregister.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -612,6 +612,24 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Step 2b";
             // 
+            // txtregisteradd
+            // 
+            this.txtregisteradd.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtregisteradd.Location = new System.Drawing.Point(137, 110);
+            this.txtregisteradd.Name = "txtregisteradd";
+            this.txtregisteradd.Size = new System.Drawing.Size(132, 22);
+            this.txtregisteradd.TabIndex = 18;
+            this.txtregisteradd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 116);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(118, 16);
+            this.label14.TabIndex = 41;
+            this.label14.Text = "Register Address :";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -626,7 +644,7 @@
             this.txtcoiladd.Location = new System.Drawing.Point(137, 28);
             this.txtcoiladd.Name = "txtcoiladd";
             this.txtcoiladd.Size = new System.Drawing.Size(132, 22);
-            this.txtcoiladd.TabIndex = 39;
+            this.txtcoiladd.TabIndex = 15;
             // 
             // btnviewlog
             // 
@@ -697,24 +715,6 @@
             this.groupBox7.TabIndex = 48;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Log";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 116);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(118, 16);
-            this.label14.TabIndex = 41;
-            this.label14.Text = "Register Address :";
-            // 
-            // txtregisteradd
-            // 
-            this.txtregisteradd.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtregisteradd.Location = new System.Drawing.Point(137, 110);
-            this.txtregisteradd.Name = "txtregisteradd";
-            this.txtregisteradd.Size = new System.Drawing.Size(132, 22);
-            this.txtregisteradd.TabIndex = 42;
-            this.txtregisteradd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
