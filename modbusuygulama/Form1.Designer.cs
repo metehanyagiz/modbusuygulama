@@ -60,6 +60,12 @@
             this.btnwritetrue = new System.Windows.Forms.Button();
             this.btnwriteregister = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtnopoint = new System.Windows.Forms.TextBox();
+            this.txtstartadd = new System.Windows.Forms.TextBox();
+            this.txtslaveid = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnloadcnfg = new System.Windows.Forms.Button();
             this.btnsavecnfg = new System.Windows.Forms.Button();
             this.rbholding = new System.Windows.Forms.RadioButton();
@@ -71,6 +77,8 @@
             this.txtregister = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtcoiladd = new System.Windows.Forms.TextBox();
             this.btnviewlog = new System.Windows.Forms.Button();
             this.txtlog = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -78,6 +86,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.chkautorefresh = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtregisteradd = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -291,16 +301,16 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(5, 692);
+            this.pictureBox1.Location = new System.Drawing.Point(861, 847);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(204, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(128, 77);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
             // btnconnect
             // 
-            this.btnconnect.Location = new System.Drawing.Point(59, 142);
+            this.btnconnect.Location = new System.Drawing.Point(57, 223);
             this.btnconnect.Name = "btnconnect";
             this.btnconnect.Size = new System.Drawing.Size(115, 23);
             this.btnconnect.TabIndex = 14;
@@ -311,20 +321,21 @@
             // txtipaddress
             // 
             this.txtipaddress.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtipaddress.Location = new System.Drawing.Point(67, 63);
+            this.txtipaddress.Location = new System.Drawing.Point(111, 72);
             this.txtipaddress.Name = "txtipaddress";
-            this.txtipaddress.Size = new System.Drawing.Size(132, 22);
+            this.txtipaddress.Size = new System.Drawing.Size(100, 22);
             this.txtipaddress.TabIndex = 4;
             this.txtipaddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 30);
+            this.label4.Location = new System.Drawing.Point(3, 27);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(240, 16);
+            this.label4.Size = new System.Drawing.Size(236, 16);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Enter an IP address and port to connect";
+            this.label4.Text = "Enter necessary information to connect";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // btnread
             // 
@@ -338,7 +349,8 @@
             // 
             // txtdata
             // 
-            this.txtdata.Location = new System.Drawing.Point(307, 541);
+            this.txtdata.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtdata.Location = new System.Drawing.Point(746, 603);
             this.txtdata.Name = "txtdata";
             this.txtdata.Size = new System.Drawing.Size(100, 22);
             this.txtdata.TabIndex = 21;
@@ -346,7 +358,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(329, 522);
+            this.label5.Location = new System.Drawing.Point(768, 584);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 16);
             this.label5.TabIndex = 22;
@@ -355,16 +367,16 @@
             // 
             // txtport
             // 
-            this.txtport.Location = new System.Drawing.Point(67, 91);
+            this.txtport.Location = new System.Drawing.Point(111, 97);
             this.txtport.Name = "txtport";
-            this.txtport.Size = new System.Drawing.Size(48, 22);
+            this.txtport.Size = new System.Drawing.Size(100, 22);
             this.txtport.TabIndex = 23;
             this.txtport.TextChanged += new System.EventHandler(this.txtport_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(39, 66);
+            this.label6.Location = new System.Drawing.Point(10, 76);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(25, 16);
             this.label6.TabIndex = 24;
@@ -373,7 +385,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 94);
+            this.label7.Location = new System.Drawing.Point(10, 101);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 16);
             this.label7.TabIndex = 25;
@@ -381,9 +393,9 @@
             // 
             // btnwritetrue
             // 
-            this.btnwritetrue.Location = new System.Drawing.Point(16, 29);
+            this.btnwritetrue.Location = new System.Drawing.Point(28, 65);
             this.btnwritetrue.Name = "btnwritetrue";
-            this.btnwritetrue.Size = new System.Drawing.Size(125, 23);
+            this.btnwritetrue.Size = new System.Drawing.Size(111, 23);
             this.btnwritetrue.TabIndex = 29;
             this.btnwritetrue.Text = "Write Coil True";
             this.btnwritetrue.UseVisualStyleBackColor = true;
@@ -391,7 +403,7 @@
             // 
             // btnwriteregister
             // 
-            this.btnwriteregister.Location = new System.Drawing.Point(112, 133);
+            this.btnwriteregister.Location = new System.Drawing.Point(110, 180);
             this.btnwriteregister.Name = "btnwriteregister";
             this.btnwriteregister.Size = new System.Drawing.Size(160, 23);
             this.btnwriteregister.TabIndex = 30;
@@ -401,6 +413,12 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.txtnopoint);
+            this.groupBox4.Controls.Add(this.txtstartadd);
+            this.groupBox4.Controls.Add(this.txtslaveid);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.btnloadcnfg);
             this.groupBox4.Controls.Add(this.btnsavecnfg);
@@ -411,14 +429,63 @@
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Location = new System.Drawing.Point(12, 377);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(246, 248);
+            this.groupBox4.Size = new System.Drawing.Size(246, 321);
             this.groupBox4.TabIndex = 31;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Step 1";
             // 
+            // txtnopoint
+            // 
+            this.txtnopoint.Location = new System.Drawing.Point(111, 181);
+            this.txtnopoint.Name = "txtnopoint";
+            this.txtnopoint.Size = new System.Drawing.Size(100, 22);
+            this.txtnopoint.TabIndex = 49;
+            // 
+            // txtstartadd
+            // 
+            this.txtstartadd.Location = new System.Drawing.Point(111, 153);
+            this.txtstartadd.Name = "txtstartadd";
+            this.txtstartadd.Size = new System.Drawing.Size(100, 22);
+            this.txtstartadd.TabIndex = 48;
+            // 
+            // txtslaveid
+            // 
+            this.txtslaveid.Location = new System.Drawing.Point(111, 125);
+            this.txtslaveid.Name = "txtslaveid";
+            this.txtslaveid.Size = new System.Drawing.Size(100, 22);
+            this.txtslaveid.TabIndex = 47;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 131);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(64, 16);
+            this.label12.TabIndex = 46;
+            this.label12.Text = "Slave ID :";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(10, 184);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(88, 16);
+            this.label11.TabIndex = 45;
+            this.label11.Text = "No. of Points :";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(10, 159);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 16);
+            this.label10.TabIndex = 44;
+            this.label10.Text = "Start Address :";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
             // btnloadcnfg
             // 
-            this.btnloadcnfg.Location = new System.Drawing.Point(59, 219);
+            this.btnloadcnfg.Location = new System.Drawing.Point(59, 281);
             this.btnloadcnfg.Name = "btnloadcnfg";
             this.btnloadcnfg.Size = new System.Drawing.Size(106, 23);
             this.btnloadcnfg.TabIndex = 43;
@@ -428,7 +495,7 @@
             // 
             // btnsavecnfg
             // 
-            this.btnsavecnfg.Location = new System.Drawing.Point(59, 190);
+            this.btnsavecnfg.Location = new System.Drawing.Point(59, 252);
             this.btnsavecnfg.Name = "btnsavecnfg";
             this.btnsavecnfg.Size = new System.Drawing.Size(106, 23);
             this.btnsavecnfg.TabIndex = 42;
@@ -500,9 +567,9 @@
             // 
             // btnwritefalse
             // 
-            this.btnwritefalse.Location = new System.Drawing.Point(148, 29);
+            this.btnwritefalse.Location = new System.Drawing.Point(145, 65);
             this.btnwritefalse.Name = "btnwritefalse";
-            this.btnwritefalse.Size = new System.Drawing.Size(124, 23);
+            this.btnwritefalse.Size = new System.Drawing.Size(113, 23);
             this.btnwritefalse.TabIndex = 37;
             this.btnwritefalse.Text = "Write Coil False";
             this.btnwritefalse.UseVisualStyleBackColor = true;
@@ -510,8 +577,8 @@
             // 
             // txtregister
             // 
-            this.txtregister.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.txtregister.Location = new System.Drawing.Point(126, 95);
+            this.txtregister.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtregister.Location = new System.Drawing.Point(137, 149);
             this.txtregister.Name = "txtregister";
             this.txtregister.Size = new System.Drawing.Size(132, 22);
             this.txtregister.TabIndex = 26;
@@ -521,25 +588,45 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 98);
+            this.label8.Location = new System.Drawing.Point(12, 152);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(96, 16);
+            this.label8.Size = new System.Drawing.Size(102, 16);
             this.label8.TabIndex = 38;
-            this.label8.Text = "Register Value";
+            this.label8.Text = "Register Value :";
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.txtregisteradd);
+            this.groupBox6.Controls.Add(this.label14);
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Controls.Add(this.txtcoiladd);
             this.groupBox6.Controls.Add(this.btnwritetrue);
             this.groupBox6.Controls.Add(this.label8);
             this.groupBox6.Controls.Add(this.btnwritefalse);
             this.groupBox6.Controls.Add(this.btnwriteregister);
             this.groupBox6.Controls.Add(this.txtregister);
-            this.groupBox6.Location = new System.Drawing.Point(273, 584);
+            this.groupBox6.Location = new System.Drawing.Point(273, 530);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(286, 171);
+            this.groupBox6.Size = new System.Drawing.Size(286, 237);
             this.groupBox6.TabIndex = 39;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Step 2b";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(25, 31);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 16);
+            this.label13.TabIndex = 40;
+            this.label13.Text = "Coil Address :";
+            // 
+            // txtcoiladd
+            // 
+            this.txtcoiladd.Location = new System.Drawing.Point(137, 28);
+            this.txtcoiladd.Name = "txtcoiladd";
+            this.txtcoiladd.Size = new System.Drawing.Size(132, 22);
+            this.txtcoiladd.TabIndex = 39;
             // 
             // btnviewlog
             // 
@@ -553,6 +640,7 @@
             // 
             // txtlog
             // 
+            this.txtlog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtlog.Location = new System.Drawing.Point(6, 21);
             this.txtlog.Multiline = true;
             this.txtlog.Name = "txtlog";
@@ -610,11 +698,29 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Log";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 116);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(118, 16);
+            this.label14.TabIndex = 41;
+            this.label14.Text = "Register Address :";
+            // 
+            // txtregisteradd
+            // 
+            this.txtregisteradd.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtregisteradd.Location = new System.Drawing.Point(137, 110);
+            this.txtregisteradd.Name = "txtregisteradd";
+            this.txtregisteradd.Size = new System.Drawing.Size(132, 22);
+            this.txtregisteradd.TabIndex = 42;
+            this.txtregisteradd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 767);
+            this.ClientSize = new System.Drawing.Size(989, 926);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -700,6 +806,16 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox chkautorefresh;
         private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtslaveid;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtnopoint;
+        private System.Windows.Forms.TextBox txtstartadd;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtcoiladd;
+        private System.Windows.Forms.TextBox txtregisteradd;
+        private System.Windows.Forms.Label label14;
     }
 }
 

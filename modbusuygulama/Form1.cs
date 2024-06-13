@@ -100,9 +100,9 @@ namespace modbusuygulama
                     MessageBox.Show("Not connected to any Modbus device.");
                     return;
                 }
-                byte slaveId = 1;
-                ushort startAddress = 0;
-                ushort numberofpoints = 1;
+                byte slaveId = byte.Parse(txtslaveid.Text);
+                ushort startAddress = ushort.Parse(txtstartadd.Text);
+                ushort numberofpoints = ushort.Parse(txtnopoint.Text);
                 ushort[] registers;
                 bool[] values;
 
@@ -160,7 +160,7 @@ namespace modbusuygulama
         {
 
         }
-
+        //write coil true
         private void btnwritecoil_Click(object sender, EventArgs e)
         {
             try
@@ -171,8 +171,8 @@ namespace modbusuygulama
                     return;
                 }
 
-                byte slaveId = 1;
-                ushort coiladdress = 0;
+                byte slaveId = byte.Parse(txtslaveid.Text);
+                ushort coiladdress = ushort.Parse(txtcoiladd.Text);
                 bool coilvalue = true;
                 master.WriteSingleCoil(slaveId, coiladdress, coilvalue);
                 MessageBox.Show("Coil written succesfully");
@@ -193,8 +193,8 @@ namespace modbusuygulama
                     return;
                 }
 
-                byte slaveId = 1;
-                ushort registeraddress = 0;
+                byte slaveId = byte.Parse(txtslaveid.Text);
+                ushort registeraddress = ushort.Parse(txtregisteradd.Text);
                 ushort registervalue = ushort.Parse(txtregister.Text);
                 master.WriteSingleRegister(slaveId, registeraddress, registervalue);
                 MessageBox.Show("Register written succesfully.");
@@ -223,7 +223,7 @@ namespace modbusuygulama
         {
 
         }
-
+        //write coil false
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -234,8 +234,8 @@ namespace modbusuygulama
                     return;
                 }
 
-                byte slaveId = 1;
-                ushort coiladdress = 0;
+                byte slaveId = byte.Parse(txtslaveid.Text);
+                ushort coiladdress = ushort.Parse(txtcoiladd.Text);
                 bool coilvalue = false;
                 master.WriteSingleCoil(slaveId, coiladdress, coilvalue);
                 MessageBox.Show("Coil written succesfully");
@@ -363,7 +363,15 @@ namespace modbusuygulama
            
         }
 
-        
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     public static class Logger
     {
