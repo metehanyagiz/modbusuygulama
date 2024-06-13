@@ -98,24 +98,12 @@ namespace modbusuygulama.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string coiladresi {
+        public string anaadres {
             get {
-                return ((string)(this["coiladresi"]));
+                return ((string)(this["anaadres"]));
             }
             set {
-                this["coiladresi"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string registeradresi {
-            get {
-                return ((string)(this["registeradresi"]));
-            }
-            set {
-                this["registeradresi"] = value;
+                this["anaadres"] = value;
             }
         }
     }

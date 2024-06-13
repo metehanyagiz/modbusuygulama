@@ -55,8 +55,6 @@
             this.txtport = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnwritetrue = new System.Windows.Forms.Button();
-            this.btnwriteregister = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btndisconnect = new System.Windows.Forms.Button();
             this.txtslaveid = new System.Windows.Forms.TextBox();
@@ -72,16 +70,6 @@
             this.rbcoil = new System.Windows.Forms.RadioButton();
             this.rbinput = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnwritefalse = new System.Windows.Forms.Button();
-            this.txtregister = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnmultireg = new System.Windows.Forms.Button();
-            this.txtregisteradd = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtcoiladd = new System.Windows.Forms.TextBox();
             this.btnviewlog = new System.Windows.Forms.Button();
             this.txtlog = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -109,7 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -396,26 +383,6 @@
             this.label7.TabIndex = 25;
             this.label7.Text = "Port :";
             // 
-            // btnwritetrue
-            // 
-            this.btnwritetrue.Location = new System.Drawing.Point(303, 21);
-            this.btnwritetrue.Name = "btnwritetrue";
-            this.btnwritetrue.Size = new System.Drawing.Size(123, 23);
-            this.btnwritetrue.TabIndex = 16;
-            this.btnwritetrue.Text = "Write Coil True";
-            this.btnwritetrue.UseVisualStyleBackColor = true;
-            this.btnwritetrue.Click += new System.EventHandler(this.btnwritecoil_Click);
-            // 
-            // btnwriteregister
-            // 
-            this.btnwriteregister.Location = new System.Drawing.Point(144, 177);
-            this.btnwriteregister.Name = "btnwriteregister";
-            this.btnwriteregister.Size = new System.Drawing.Size(125, 23);
-            this.btnwriteregister.TabIndex = 20;
-            this.btnwriteregister.Text = "Write Register";
-            this.btnwriteregister.UseVisualStyleBackColor = true;
-            this.btnwriteregister.Click += new System.EventHandler(this.btnwriteregister_Click);
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btndisconnect);
@@ -587,110 +554,6 @@
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Read";
-            // 
-            // btnwritefalse
-            // 
-            this.btnwritefalse.Location = new System.Drawing.Point(302, 50);
-            this.btnwritefalse.Name = "btnwritefalse";
-            this.btnwritefalse.Size = new System.Drawing.Size(124, 23);
-            this.btnwritefalse.TabIndex = 17;
-            this.btnwritefalse.Text = "Write Coil False";
-            this.btnwritefalse.UseVisualStyleBackColor = true;
-            this.btnwritefalse.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtregister
-            // 
-            this.txtregister.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtregister.Location = new System.Drawing.Point(137, 149);
-            this.txtregister.Name = "txtregister";
-            this.txtregister.Size = new System.Drawing.Size(132, 22);
-            this.txtregister.TabIndex = 19;
-            this.txtregister.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtregister.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 152);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 16);
-            this.label8.TabIndex = 38;
-            this.label8.Text = "Register Value :";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.label5);
-            this.groupBox6.Controls.Add(this.btnmultireg);
-            this.groupBox6.Controls.Add(this.txtregisteradd);
-            this.groupBox6.Controls.Add(this.label14);
-            this.groupBox6.Controls.Add(this.label13);
-            this.groupBox6.Controls.Add(this.txtcoiladd);
-            this.groupBox6.Controls.Add(this.btnwritetrue);
-            this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.btnwritefalse);
-            this.groupBox6.Controls.Add(this.btnwriteregister);
-            this.groupBox6.Controls.Add(this.txtregister);
-            this.groupBox6.Location = new System.Drawing.Point(393, 77);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(461, 483);
-            this.groupBox6.TabIndex = 39;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Step 2b";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 208);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(255, 16);
-            this.label5.TabIndex = 43;
-            this.label5.Text = "(values should be seperated by commas)";
-            // 
-            // btnmultireg
-            // 
-            this.btnmultireg.Location = new System.Drawing.Point(40, 227);
-            this.btnmultireg.Name = "btnmultireg";
-            this.btnmultireg.Size = new System.Drawing.Size(200, 23);
-            this.btnmultireg.TabIndex = 42;
-            this.btnmultireg.Text = "Write Multiple Registers";
-            this.btnmultireg.UseVisualStyleBackColor = true;
-            this.btnmultireg.Click += new System.EventHandler(this.btnmultireg_Click);
-            // 
-            // txtregisteradd
-            // 
-            this.txtregisteradd.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtregisteradd.Location = new System.Drawing.Point(137, 110);
-            this.txtregisteradd.Name = "txtregisteradd";
-            this.txtregisteradd.Size = new System.Drawing.Size(132, 22);
-            this.txtregisteradd.TabIndex = 18;
-            this.txtregisteradd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtregisteradd.TextChanged += new System.EventHandler(this.txtregisteradd_TextChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 116);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(118, 16);
-            this.label14.TabIndex = 41;
-            this.label14.Text = "Register Address :";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(25, 31);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 16);
-            this.label13.TabIndex = 40;
-            this.label13.Text = "Coil Address :";
-            // 
-            // txtcoiladd
-            // 
-            this.txtcoiladd.Location = new System.Drawing.Point(137, 28);
-            this.txtcoiladd.Name = "txtcoiladd";
-            this.txtcoiladd.Size = new System.Drawing.Size(132, 22);
-            this.txtcoiladd.TabIndex = 15;
-            this.txtcoiladd.TextChanged += new System.EventHandler(this.txtcoiladd_TextChanged);
             // 
             // btnviewlog
             // 
@@ -911,7 +774,7 @@
             this.tabPage1.Location = new System.Drawing.Point(104, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1173, 770);
+            this.tabPage1.Size = new System.Drawing.Size(909, 770);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Maestro";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -920,11 +783,10 @@
             // 
             this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Controls.Add(this.btnsavecnfg);
-            this.tabPage3.Controls.Add(this.groupBox6);
             this.tabPage3.Controls.Add(this.btnloadcnfg);
             this.tabPage3.Location = new System.Drawing.Point(104, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1173, 770);
+            this.tabPage3.Size = new System.Drawing.Size(909, 770);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Deneme Özellikleri";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -954,8 +816,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -997,18 +857,12 @@
         private System.Windows.Forms.TextBox txtport;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnwritetrue;
-        private System.Windows.Forms.Button btnwriteregister;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton rbholding;
         private System.Windows.Forms.RadioButton rbdiscrete;
         private System.Windows.Forms.RadioButton rbcoil;
         private System.Windows.Forms.RadioButton rbinput;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btnwritefalse;
-        private System.Windows.Forms.TextBox txtregister;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnviewlog;
         private System.Windows.Forms.TextBox txtlog;
         private System.Windows.Forms.Button btnsavecnfg;
@@ -1024,16 +878,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtnopoint;
         private System.Windows.Forms.TextBox txtstartadd;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtcoiladd;
-        private System.Windows.Forms.TextBox txtregisteradd;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtoutput;
         private System.Windows.Forms.Button txtcopyclip;
         private System.Windows.Forms.Button txtclear;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnmultireg;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

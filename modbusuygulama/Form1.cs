@@ -34,6 +34,9 @@ namespace modbusuygulama
             chkautorefresh.CheckedChanged += new EventHandler(chkautorefresh_CheckedChanged);
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
+
+
+        //tabcontrol'un sekmelerini horizontal yapmaya yarayan microsoft kodu
         private void tabControl1_DrawItem(Object sender, System.Windows.Forms.DrawItemEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -67,13 +70,13 @@ namespace modbusuygulama
             _stringFlags.LineAlignment = StringAlignment.Center;
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
         }
+
+        //uygulama kapatıldığında kaydedilen değerleri açınca geri çağıran kısım
         private void Form1_Load(object sender, EventArgs e)
         {
             txtipaddress.Text = Properties.Settings.Default.ipadresi;
             txtport.Text = Properties.Settings.Default.portdeger;
-            txtregister.Text = Properties.Settings.Default.registervalue;
-            txtcoiladd.Text = Properties.Settings.Default.coiladresi;
-            txtregisteradd.Text = Properties.Settings.Default.registeradresi;
+            txtaddressbox.Text = Properties.Settings.Default.anaadres;
             txtnopoint.Text = Properties.Settings.Default.numberofpoi;
             txtstartadd.Text = Properties.Settings.Default.startadresi;
             txtslaveid.Text = Properties.Settings.Default.slavid;
@@ -89,6 +92,7 @@ namespace modbusuygulama
 
         }
 
+        //connect tuşu
         private void btnconnect_Click(object sender, EventArgs e)
         {
             try
@@ -113,6 +117,8 @@ namespace modbusuygulama
             }
         }
 
+
+        //seçilen radiobutton'a göre değer okuma 
         private void btnread_Click(object sender, EventArgs e)
 
 
@@ -136,6 +142,8 @@ namespace modbusuygulama
                 readregister("discrete");
             }
         }
+
+        //değerleri okuyan esas fonksiyon
         private void readregister(string type)
         {
             try
@@ -226,16 +234,17 @@ namespace modbusuygulama
 
         }
 
+        //son reading'i kopyalama için gereken atama
         private string lastregisterreading = string.Empty;
+
+        //profil kaydetme özelliği
         private void saveconfig(string filepath)
         {
             var config = new Config
             {
                 ipcnfg = txtipaddress.Text,
                 portcnfg = txtport.Text,
-                registercnfg = txtregister.Text,
-                coiladdcnfg = txtcoiladd.Text,
-                registeraddcnfg = txtregisteradd.Text,
+                anaadrescnfg = txtaddressbox.Text,
                 nopointcnfg = txtnopoint.Text,
                 startaddcnfg = txtstartadd.Text,
                 slaveidcnfg = txtslaveid.Text,
@@ -250,9 +259,7 @@ namespace modbusuygulama
 
             txtipaddress.Text = config.ipcnfg;
             txtport.Text = config.portcnfg;
-            txtregister.Text=config.registercnfg;
-            txtcoiladd.Text=config.coiladdcnfg;
-            txtregisteradd.Text=config.registeraddcnfg;
+            txtaddressbox.Text=config.anaadrescnfg;
             txtnopoint.Text=config.nopointcnfg;
             txtstartadd.Text=config.startaddcnfg;
             txtslaveid.Text=config.slaveidcnfg;
@@ -261,60 +268,16 @@ namespace modbusuygulama
         {
             public string ipcnfg { get; set; }
             public string portcnfg { get; set; }
-            public string registercnfg { get; set; }
-            public string coiladdcnfg { get; set; }
-            public string registeraddcnfg { get; set; }
             public string nopointcnfg {  get; set; }
             public string startaddcnfg { get; set; }
             public string slaveidcnfg {  get; set; }
+            public string anaadrescnfg {  get; set; }
         }    
         private void label5_Click(object sender, EventArgs e)
         {
 
         }
-        //write coil true
-        private void btnwritecoil_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (master == null)
-                {
-                    MessageBox.Show("Not connected to any Modbus device.");
-                    return;
-                }
-
-                byte slaveId = byte.Parse(txtslaveid.Text);
-                ushort coiladdress = ushort.Parse(txtcoiladd.Text);
-                bool coilvalue = true;
-                master.WriteSingleCoil(slaveId, coiladdress, coilvalue);
-                MessageBox.Show("Coil written succesfully");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error:{ex.Message}");
-            }
-        }
-
-        private void btnwriteregister_Click(object sender, EventArgs e)
-        {
-            
-            
-                if (master == null)
-                {
-                    MessageBox.Show("Not connected to any Modbus device.");
-                    return;
-                }
-
-                byte slaveId = byte.Parse(txtslaveid.Text);
-                ushort registeraddress = ushort.Parse(txtregisteradd.Text);
-                ushort registervalue = ushort.Parse(txtregister.Text);
-                master.WriteSingleRegister(slaveId, registeraddress, registervalue);
-                MessageBox.Show("Register written succesfully.");
-
-                
-            
-                       
-        }
+        
 
         private void rbcoil_CheckedChanged(object sender, EventArgs e)
         {
@@ -335,34 +298,14 @@ namespace modbusuygulama
         {
 
         }
-        //write coil false
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (master == null)
-                {
-                    MessageBox.Show("Not connected to any Modbus device.");
-                    return;
-                }
-
-                byte slaveId = byte.Parse(txtslaveid.Text);
-                ushort coiladdress = ushort.Parse(txtcoiladd.Text);
-                bool coilvalue = false;
-                master.WriteSingleCoil(slaveId, coiladdress, coilvalue);
-                MessageBox.Show("Coil written succesfully");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error:{ex.Message}");
-            }
-        }
+      
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
+        //kapanırken değerleri kaydetme
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -375,9 +318,7 @@ namespace modbusuygulama
 
                     Properties.Settings.Default.ipadresi = txtipaddress.Text;
                     Properties.Settings.Default.portdeger = txtport.Text;
-                    Properties.Settings.Default.registervalue = txtregister.Text;
-                    Properties.Settings.Default.coiladresi= txtcoiladd.Text;
-                    Properties.Settings.Default.registeradresi=txtregisteradd.Text;
+                    Properties.Settings.Default.anaadres = txtaddressbox.Text;
                     Properties.Settings.Default.numberofpoi=txtnopoint.Text;
                     Properties.Settings.Default.startadresi=txtstartadd.Text;
                     Properties.Settings.Default.slavid=txtslaveid.Text;
@@ -387,9 +328,7 @@ namespace modbusuygulama
                 {
                     Properties.Settings.Default.ipadresi = null;
                     Properties.Settings.Default.portdeger = null;
-                    Properties.Settings.Default.registervalue = null;
-                    Properties.Settings.Default.coiladresi = null;
-                    Properties.Settings.Default.registeradresi = null;
+                    Properties.Settings.Default.anaadres=null;
                     Properties.Settings.Default.numberofpoi = null;
                     Properties.Settings.Default.startadresi = null;
                     Properties.Settings.Default.slavid = null;
@@ -400,9 +339,7 @@ namespace modbusuygulama
             {
                 Properties.Settings.Default.ipadresi = txtipaddress.Text;
                 Properties.Settings.Default.portdeger = txtport.Text;
-                Properties.Settings.Default.registervalue = txtregister.Text;
-                Properties.Settings.Default.coiladresi = txtcoiladd.Text;
-                Properties.Settings.Default.registeradresi = txtregisteradd.Text;
+                Properties.Settings.Default.anaadres = txtaddressbox.Text;
                 Properties.Settings.Default.numberofpoi = txtnopoint.Text;
                 Properties.Settings.Default.startadresi = txtstartadd.Text;
                 Properties.Settings.Default.slavid = txtslaveid.Text;
@@ -425,7 +362,7 @@ namespace modbusuygulama
         {
 
         }
-
+        //log ozelliği 
         private void btnviewlog_Click(object sender, EventArgs e)
         {
             scrolllog();
@@ -447,6 +384,7 @@ namespace modbusuygulama
 
         }
 
+        //profil kaydetme devamı
         private void btnsavecnfg_Click(object sender, EventArgs e)
         {
             string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "config.json");
@@ -467,7 +405,7 @@ namespace modbusuygulama
                 MessageBox.Show("Configuration file not found.");
             }
         }
-
+        //log'u kaydırma için timer
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (countdown <= 0)
@@ -517,6 +455,7 @@ namespace modbusuygulama
 
         }
 
+        //son reading'i kopyalama fonksiyonu
         private void txtcopyclip_Click(object sender, EventArgs e)
         {
             try
@@ -538,6 +477,7 @@ namespace modbusuygulama
             }
         }
 
+        //reading kutusunu temizleme
         private void txtclear_Click(object sender, EventArgs e)
         {
             txtoutput.Clear();
@@ -550,34 +490,7 @@ namespace modbusuygulama
 
         }
 
-        private void btnmultireg_Click(object sender, EventArgs e)
-        {
-            if (master == null)
-            {
-                MessageBox.Show("Not connected to any Modbus device.");
-                return;
-            }
-            try
-            {
-                byte slaveid = byte.Parse(txtslaveid.Text);
-                string[] values = txtregister.Text.Split(',');
-                ushort[] regvalues = new ushort[values.Length];
-                ushort registeraddress = ushort.Parse(txtregisteradd.Text);
-                for (int i=0; i<values.Length; i++)
-                {
-                    if (!ushort.TryParse(values[i].Trim(), out regvalues[i]))
-                    {
-                        MessageBox.Show("Invalid value format.");
-                        return;
-                    }
-                }
-                master.WriteMultipleRegisters(slaveid, registeraddress, regvalues);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error writing to register: {ex.Message}");
-            }
-        }
+  
 
         private void txtregisteradd_TextChanged(object sender, EventArgs e)
         {
@@ -605,6 +518,7 @@ namespace modbusuygulama
 
         }
 
+        //yeni herseyi write etme kodu
         private void btnmainwrite_Click(object sender, EventArgs e)
         {
             string input = txtmainwrite.Text;
@@ -734,6 +648,8 @@ namespace modbusuygulama
 
         }
     }
+
+    //log için olan fonk
     public static class Logger
     {
         private static string logfilepath = "application.log";
