@@ -33,6 +33,11 @@ namespace modbusuygulama
             txtipaddress.Text = Properties.Settings.Default.ipadresi;
             txtport.Text = Properties.Settings.Default.portdeger;
             txtregister.Text = Properties.Settings.Default.registervalue;
+            txtcoiladd.Text = Properties.Settings.Default.coiladresi;
+            txtregisteradd.Text = Properties.Settings.Default.registeradresi;
+            txtnopoint.Text = Properties.Settings.Default.numberofpoi;
+            txtstartadd.Text = Properties.Settings.Default.startadresi;
+            txtslaveid.Text = Properties.Settings.Default.slavid;
         }
 
         private void combochannel_SelectedIndexChanged(object sender, EventArgs e)
@@ -264,6 +269,23 @@ namespace modbusuygulama
                     Properties.Settings.Default.ipadresi = txtipaddress.Text;
                     Properties.Settings.Default.portdeger = txtport.Text;
                     Properties.Settings.Default.registervalue = txtregister.Text;
+                    Properties.Settings.Default.coiladresi= txtcoiladd.Text;
+                    Properties.Settings.Default.registeradresi=txtregisteradd.Text;
+                    Properties.Settings.Default.numberofpoi=txtnopoint.Text;
+                    Properties.Settings.Default.startadresi=txtstartadd.Text;
+                    Properties.Settings.Default.slavid=txtslaveid.Text;
+                    Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    Properties.Settings.Default.ipadresi = null;
+                    Properties.Settings.Default.portdeger = null;
+                    Properties.Settings.Default.registervalue = null;
+                    Properties.Settings.Default.coiladresi = null;
+                    Properties.Settings.Default.registeradresi = null;
+                    Properties.Settings.Default.numberofpoi = null;
+                    Properties.Settings.Default.startadresi = null;
+                    Properties.Settings.Default.slavid = null;
                     Properties.Settings.Default.Save();
                 }
             }
@@ -272,6 +294,11 @@ namespace modbusuygulama
                 Properties.Settings.Default.ipadresi = txtipaddress.Text;
                 Properties.Settings.Default.portdeger = txtport.Text;
                 Properties.Settings.Default.registervalue = txtregister.Text;
+                Properties.Settings.Default.coiladresi = txtcoiladd.Text;
+                Properties.Settings.Default.registeradresi = txtregisteradd.Text;
+                Properties.Settings.Default.numberofpoi = txtnopoint.Text;
+                Properties.Settings.Default.startadresi = txtstartadd.Text;
+                Properties.Settings.Default.slavid = txtslaveid.Text;
                 Properties.Settings.Default.Save();
             }
         }

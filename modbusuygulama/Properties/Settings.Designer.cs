@@ -58,5 +58,65 @@ namespace modbusuygulama.Properties {
                 this["registervalue"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string startadresi {
+            get {
+                return ((string)(this["startadresi"]));
+            }
+            set {
+                this["startadresi"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string numberofpoi {
+            get {
+                return ((string)(this["numberofpoi"]));
+            }
+            set {
+                this["numberofpoi"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string slavid {
+            get {
+                return ((string)(this["slavid"]));
+            }
+            set {
+                this["slavid"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string coiladresi {
+            get {
+                return ((string)(this["coiladresi"]));
+            }
+            set {
+                this["coiladresi"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string registeradresi {
+            get {
+                return ((string)(this["registeradresi"]));
+            }
+            set {
+                this["registeradresi"] = value;
+            }
+        }
     }
 }
