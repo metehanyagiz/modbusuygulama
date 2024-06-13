@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using System.Text.Json;
 using System.Threading;
 using System.Text;
+using System.Drawing;
+using System.Text.RegularExpressions;
 
 
 namespace modbusuygulama
@@ -20,6 +22,9 @@ namespace modbusuygulama
        
         public Form1()
         {
+
+
+
             InitializeComponent();
             lblconnection.Text = "Disconnected";
             this.FormClosing += new FormClosingEventHandler(Form1_Load);
@@ -27,8 +32,41 @@ namespace modbusuygulama
             countdown = 5;
             timer1.Tick += new EventHandler(timer1_Tick);
             chkautorefresh.CheckedChanged += new EventHandler(chkautorefresh_CheckedChanged);
+            tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
+        private void tabControl1_DrawItem(Object sender, System.Windows.Forms.DrawItemEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Brush _textBrush;
 
+            // Get the item from the collection.
+            TabPage _tabPage = tabControl1.TabPages[e.Index];
+
+            // Get the real bounds for the tab rectangle.
+            Rectangle _tabBounds = tabControl1.GetTabRect(e.Index);
+
+            if (e.State == DrawItemState.Selected)
+            {
+
+                // Draw a different background color, and don't paint a focus rectangle.
+                _textBrush = new SolidBrush(Color.Red);
+                g.FillRectangle(Brushes.Gray, e.Bounds);
+            }
+            else
+            {
+                _textBrush = new System.Drawing.SolidBrush(e.ForeColor);
+                e.DrawBackground();
+            }
+
+            // Use our own font.
+            Font _tabFont = new Font("Arial", 10.0f, FontStyle.Bold, GraphicsUnit.Pixel);
+
+            // Draw string. Center the text.
+            StringFormat _stringFlags = new StringFormat();
+            _stringFlags.Alignment = StringAlignment.Center;
+            _stringFlags.LineAlignment = StringAlignment.Center;
+            g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             txtipaddress.Text = Properties.Settings.Default.ipadresi;
@@ -61,16 +99,17 @@ namespace modbusuygulama
                 tcpClient = new TcpClient(ipaddress, port);
                 master = ModbusIpMaster.CreateIp(tcpClient);
                 Logger.Log("Connected to Modbus device at "+ ipaddress+":"+ port );
-
+                groupBox3.BackColor = Color.Green;
                 lblconnection.Text = "Connected";
-                MessageBox.Show("Connected successfully");
+
             }
             catch (Exception ex)
             {
 
-                lblconnection.Text = "Not Connected";
+                lblconnection.Text = "Disconnected";
                 MessageBox.Show($"Error: {ex.Message}");
                 Logger.Log("An error occured while connecting to Modbus device: " + ex.Message);
+                groupBox3.BackColor=Color.Red;
             }
         }
 
@@ -271,10 +310,10 @@ namespace modbusuygulama
                 ushort registervalue = ushort.Parse(txtregister.Text);
                 master.WriteSingleRegister(slaveId, registeraddress, registervalue);
                 MessageBox.Show("Register written succesfully.");
+
                 
             
-            
-           
+                       
         }
 
         private void rbcoil_CheckedChanged(object sender, EventArgs e)
@@ -507,6 +546,190 @@ namespace modbusuygulama
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnmultireg_Click(object sender, EventArgs e)
+        {
+            if (master == null)
+            {
+                MessageBox.Show("Not connected to any Modbus device.");
+                return;
+            }
+            try
+            {
+                byte slaveid = byte.Parse(txtslaveid.Text);
+                string[] values = txtregister.Text.Split(',');
+                ushort[] regvalues = new ushort[values.Length];
+                ushort registeraddress = ushort.Parse(txtregisteradd.Text);
+                for (int i=0; i<values.Length; i++)
+                {
+                    if (!ushort.TryParse(values[i].Trim(), out regvalues[i]))
+                    {
+                        MessageBox.Show("Invalid value format.");
+                        return;
+                    }
+                }
+                master.WriteMultipleRegisters(slaveid, registeraddress, regvalues);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error writing to register: {ex.Message}");
+            }
+        }
+
+        private void txtregisteradd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        
+        //disconnect butonu
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (master != null)
+            {
+                master.Dispose();
+                master = null;
+                lblconnection.Text = "Disconnected";
+                groupBox3.BackColor = Color.Red;
+            }
+            else
+            {
+                MessageBox.Show("Already disconnected.");
+            }
+        }
+
+        private void lblconnection_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnmainwrite_Click(object sender, EventArgs e)
+        {
+            string input = txtmainwrite.Text;
+            categorizeinput(input);
+        }
+        private void categorizeinput(string input)
+        {
+            string multicoilpattern= @"^[a-zA-Z, \s]*$";
+            string singlecoilpattern = @"^[a-zA-Z\s]*$";
+            string singleregisterpattern = @"^[0-9\s]*$";
+            string multiregisterpattern = @"^[0-9, \s]*$";
+
+            if (Regex.IsMatch(input, multicoilpattern))
+            {
+                if(Regex.IsMatch (input, singlecoilpattern))
+                {
+                    try
+                    {
+                        if (master == null)
+                        {
+                            MessageBox.Show("Not connected to any Modbus device.");
+                            return;
+                        }
+
+                        byte slaveId = byte.Parse(txtslaveid.Text);
+                        ushort coiladdress = ushort.Parse(txtaddressbox.Text);
+                        bool coilvalue = bool.Parse(txtmainwrite.Text);
+                        master.WriteSingleCoil(slaveId, coiladdress, coilvalue);
+                        MessageBox.Show("Coil written succesfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error:{ex.Message}");
+                    }
+                }
+                else
+                {
+
+
+                    try
+                    {
+                        if (master == null)
+                        {
+                            MessageBox.Show("Not connected to any Modbus device.");
+                            return;
+                        }
+
+                        byte slaveId = byte.Parse(txtslaveid.Text);
+                        ushort coiladdress = ushort.Parse(txtaddressbox.Text);
+                        string[] values = txtmainwrite.Text.Split(new char[] { ',' });
+                        bool[] coilvalue= new bool[values.Length];
+                        for (int i = 0; i < values.Length; i++)
+                        {
+                            coilvalue[i] = bool.Parse(values[i]);
+                        }
+
+
+                        master.WriteMultipleCoils(slaveId, coiladdress, coilvalue);
+                        MessageBox.Show("Coil written succesfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error:{ex.Message}");
+                    }
+
+                }
+            }
+            else if (Regex.IsMatch(input,singleregisterpattern))
+            {
+                if (master == null)
+                {
+                    MessageBox.Show("Not connected to any Modbus device.");
+                    return;
+                }
+
+                byte slaveId = byte.Parse(txtslaveid.Text);
+                ushort registeraddress = ushort.Parse(txtaddressbox.Text);
+                ushort registervalue = ushort.Parse(txtmainwrite.Text);
+                master.WriteSingleRegister(slaveId, registeraddress, registervalue);
+                MessageBox.Show("Register written succesfully.");
+            }
+            else if (Regex.IsMatch(input, multiregisterpattern))
+            {
+                if (master == null)
+                {
+                    MessageBox.Show("Not connected to any Modbus device.");
+                    return;
+                }
+                try
+                {
+                    byte slaveid = byte.Parse(txtslaveid.Text);
+                    string[] values = txtmainwrite.Text.Split(',');
+                    ushort[] regvalues = new ushort[values.Length];
+                    ushort registeraddress = ushort.Parse(txtaddressbox.Text);
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        if (!ushort.TryParse(values[i].Trim(), out regvalues[i]))
+                        {
+                            MessageBox.Show("Invalid value format.");
+                            return;
+                        }
+                    }
+                    master.WriteMultipleRegisters(slaveid, registeraddress, regvalues);
+                    MessageBox.Show("Register written succesfully.");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error writing to register: {ex.Message}");
+                }
+
+            }
+        }
+
+        private void txtmainwrite_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtcoiladd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtnopoint_TextChanged(object sender, EventArgs e)
         {
 
         }

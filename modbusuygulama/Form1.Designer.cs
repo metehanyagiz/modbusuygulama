@@ -58,10 +58,11 @@
             this.btnwritetrue = new System.Windows.Forms.Button();
             this.btnwriteregister = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtnopoint = new System.Windows.Forms.TextBox();
-            this.txtstartadd = new System.Windows.Forms.TextBox();
+            this.btndisconnect = new System.Windows.Forms.Button();
             this.txtslaveid = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtnopoint = new System.Windows.Forms.TextBox();
+            this.txtstartadd = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.btnloadcnfg = new System.Windows.Forms.Button();
@@ -75,6 +76,8 @@
             this.txtregister = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnmultireg = new System.Windows.Forms.Button();
             this.txtregisteradd = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -90,6 +93,16 @@
             this.txtcopyclip = new System.Windows.Forms.Button();
             this.txtclear = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtaddressbox = new System.Windows.Forms.TextBox();
+            this.txtmainwrite = new System.Windows.Forms.TextBox();
+            this.btnmainwrite = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -99,12 +112,17 @@
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 32);
+            this.label1.Location = new System.Drawing.Point(176, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 16);
             this.label1.TabIndex = 0;
@@ -113,7 +131,7 @@
             // lblipaddress
             // 
             this.lblipaddress.AutoSize = true;
-            this.lblipaddress.Location = new System.Drawing.Point(140, 32);
+            this.lblipaddress.Location = new System.Drawing.Point(310, 20);
             this.lblipaddress.Name = "lblipaddress";
             this.lblipaddress.Size = new System.Drawing.Size(61, 16);
             this.lblipaddress.TabIndex = 1;
@@ -123,7 +141,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(270, 32);
+            this.label2.Location = new System.Drawing.Point(440, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 16);
             this.label2.TabIndex = 2;
@@ -132,11 +150,12 @@
             // lblconnection
             // 
             this.lblconnection.AutoSize = true;
-            this.lblconnection.Location = new System.Drawing.Point(402, 32);
+            this.lblconnection.Location = new System.Drawing.Point(572, 20);
             this.lblconnection.Name = "lblconnection";
             this.lblconnection.Size = new System.Drawing.Size(159, 16);
             this.lblconnection.TabIndex = 3;
             this.lblconnection.Text = "Connected/Disconnected";
+            this.lblconnection.Click += new System.EventHandler(this.lblconnection_Click);
             // 
             // combochannel
             // 
@@ -269,7 +288,7 @@
             this.groupBox1.Controls.Add(this.btnlog);
             this.groupBox1.Controls.Add(this.btnmaestrofw);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox1.Location = new System.Drawing.Point(16, 95);
+            this.groupBox1.Location = new System.Drawing.Point(31, 19);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 220);
             this.groupBox1.TabIndex = 15;
@@ -283,7 +302,7 @@
             this.groupBox2.Controls.Add(this.comboaddress);
             this.groupBox2.Controls.Add(this.lbldeviceinfo);
             this.groupBox2.Controls.Add(this.btndriverfw);
-            this.groupBox2.Location = new System.Drawing.Point(248, 95);
+            this.groupBox2.Location = new System.Drawing.Point(297, 28);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(265, 271);
             this.groupBox2.TabIndex = 16;
@@ -295,18 +314,18 @@
             this.groupBox3.Controls.Add(this.lblipaddress);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.lblconnection);
-            this.groupBox3.Location = new System.Drawing.Point(16, 23);
+            this.groupBox3.Location = new System.Drawing.Point(12, 10);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(572, 66);
+            this.groupBox3.Size = new System.Drawing.Size(933, 52);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(849, 959);
+            this.pictureBox1.Location = new System.Drawing.Point(951, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(78, 45);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
@@ -314,9 +333,9 @@
             // 
             // btnconnect
             // 
-            this.btnconnect.Location = new System.Drawing.Point(57, 223);
+            this.btnconnect.Location = new System.Drawing.Point(43, 165);
             this.btnconnect.Name = "btnconnect";
-            this.btnconnect.Size = new System.Drawing.Size(115, 23);
+            this.btnconnect.Size = new System.Drawing.Size(156, 42);
             this.btnconnect.TabIndex = 9;
             this.btnconnect.Text = "Connect";
             this.btnconnect.UseVisualStyleBackColor = true;
@@ -343,9 +362,9 @@
             // 
             // btnread
             // 
-            this.btnread.Location = new System.Drawing.Point(59, 97);
+            this.btnread.Location = new System.Drawing.Point(338, 431);
             this.btnread.Name = "btnread";
-            this.btnread.Size = new System.Drawing.Size(165, 23);
+            this.btnread.Size = new System.Drawing.Size(156, 75);
             this.btnread.TabIndex = 14;
             this.btnread.Text = "Read ";
             this.btnread.UseVisualStyleBackColor = true;
@@ -379,7 +398,7 @@
             // 
             // btnwritetrue
             // 
-            this.btnwritetrue.Location = new System.Drawing.Point(16, 65);
+            this.btnwritetrue.Location = new System.Drawing.Point(303, 21);
             this.btnwritetrue.Name = "btnwritetrue";
             this.btnwritetrue.Size = new System.Drawing.Size(123, 23);
             this.btnwritetrue.TabIndex = 16;
@@ -389,9 +408,9 @@
             // 
             // btnwriteregister
             // 
-            this.btnwriteregister.Location = new System.Drawing.Point(110, 180);
+            this.btnwriteregister.Location = new System.Drawing.Point(144, 177);
             this.btnwriteregister.Name = "btnwriteregister";
-            this.btnwriteregister.Size = new System.Drawing.Size(160, 23);
+            this.btnwriteregister.Size = new System.Drawing.Size(125, 23);
             this.btnwriteregister.TabIndex = 20;
             this.btnwriteregister.Text = "Write Register";
             this.btnwriteregister.UseVisualStyleBackColor = true;
@@ -399,40 +418,31 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.txtnopoint);
-            this.groupBox4.Controls.Add(this.txtstartadd);
-            this.groupBox4.Controls.Add(this.txtslaveid);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.btndisconnect);
             this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.btnloadcnfg);
-            this.groupBox4.Controls.Add(this.btnsavecnfg);
             this.groupBox4.Controls.Add(this.btnconnect);
             this.groupBox4.Controls.Add(this.txtipaddress);
             this.groupBox4.Controls.Add(this.txtport);
+            this.groupBox4.Controls.Add(this.txtslaveid);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Location = new System.Drawing.Point(12, 377);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Location = new System.Drawing.Point(32, 45);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(246, 321);
+            this.groupBox4.Size = new System.Drawing.Size(246, 281);
             this.groupBox4.TabIndex = 31;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Step 1";
+            this.groupBox4.Text = "Connect";
             // 
-            // txtnopoint
+            // btndisconnect
             // 
-            this.txtnopoint.Location = new System.Drawing.Point(111, 181);
-            this.txtnopoint.Name = "txtnopoint";
-            this.txtnopoint.Size = new System.Drawing.Size(100, 22);
-            this.txtnopoint.TabIndex = 8;
-            // 
-            // txtstartadd
-            // 
-            this.txtstartadd.Location = new System.Drawing.Point(111, 153);
-            this.txtstartadd.Name = "txtstartadd";
-            this.txtstartadd.Size = new System.Drawing.Size(100, 22);
-            this.txtstartadd.TabIndex = 7;
+            this.btndisconnect.Location = new System.Drawing.Point(43, 220);
+            this.btndisconnect.Name = "btndisconnect";
+            this.btndisconnect.Size = new System.Drawing.Size(156, 44);
+            this.btndisconnect.TabIndex = 47;
+            this.btndisconnect.Text = "Disconnect";
+            this.btndisconnect.UseVisualStyleBackColor = true;
+            this.btndisconnect.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // txtslaveid
             // 
@@ -444,57 +454,77 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 131);
+            this.label12.Location = new System.Drawing.Point(10, 125);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(64, 16);
             this.label12.TabIndex = 46;
             this.label12.Text = "Slave ID :";
             // 
+            // txtnopoint
+            // 
+            this.txtnopoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtnopoint.Location = new System.Drawing.Point(131, 59);
+            this.txtnopoint.Name = "txtnopoint";
+            this.txtnopoint.Size = new System.Drawing.Size(142, 23);
+            this.txtnopoint.TabIndex = 8;
+            this.txtnopoint.TextChanged += new System.EventHandler(this.txtnopoint_TextChanged);
+            // 
+            // txtstartadd
+            // 
+            this.txtstartadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtstartadd.Location = new System.Drawing.Point(131, 24);
+            this.txtstartadd.Name = "txtstartadd";
+            this.txtstartadd.Size = new System.Drawing.Size(142, 23);
+            this.txtstartadd.TabIndex = 7;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 184);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label11.Location = new System.Drawing.Point(10, 59);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(88, 16);
+            this.label11.Size = new System.Drawing.Size(101, 17);
             this.label11.TabIndex = 45;
-            this.label11.Text = "No. of Points :";
+            this.label11.Text = "No. of Values :";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 159);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label10.Location = new System.Drawing.Point(10, 27);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 16);
+            this.label10.Size = new System.Drawing.Size(102, 17);
             this.label10.TabIndex = 44;
             this.label10.Text = "Start Address :";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // btnloadcnfg
             // 
-            this.btnloadcnfg.Location = new System.Drawing.Point(59, 281);
+            this.btnloadcnfg.Location = new System.Drawing.Point(84, 537);
             this.btnloadcnfg.Name = "btnloadcnfg";
-            this.btnloadcnfg.Size = new System.Drawing.Size(106, 23);
+            this.btnloadcnfg.Size = new System.Drawing.Size(235, 23);
             this.btnloadcnfg.TabIndex = 43;
-            this.btnloadcnfg.Text = "Load config";
+            this.btnloadcnfg.Text = "Load profile";
             this.btnloadcnfg.UseVisualStyleBackColor = true;
             this.btnloadcnfg.Click += new System.EventHandler(this.btnloadcnfg_Click);
             // 
             // btnsavecnfg
             // 
-            this.btnsavecnfg.Location = new System.Drawing.Point(59, 252);
+            this.btnsavecnfg.Location = new System.Drawing.Point(84, 498);
             this.btnsavecnfg.Name = "btnsavecnfg";
-            this.btnsavecnfg.Size = new System.Drawing.Size(106, 23);
+            this.btnsavecnfg.Size = new System.Drawing.Size(235, 23);
             this.btnsavecnfg.TabIndex = 42;
-            this.btnsavecnfg.Text = "Save config";
+            this.btnsavecnfg.Text = "Save current profile";
             this.btnsavecnfg.UseVisualStyleBackColor = true;
             this.btnsavecnfg.Click += new System.EventHandler(this.btnsavecnfg_Click);
             // 
             // rbholding
             // 
             this.rbholding.AutoSize = true;
-            this.rbholding.Location = new System.Drawing.Point(16, 28);
+            this.rbholding.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbholding.Location = new System.Drawing.Point(13, 107);
             this.rbholding.Name = "rbholding";
-            this.rbholding.Size = new System.Drawing.Size(129, 20);
+            this.rbholding.Size = new System.Drawing.Size(134, 21);
             this.rbholding.TabIndex = 10;
             this.rbholding.TabStop = true;
             this.rbholding.Text = "Holding Register";
@@ -504,9 +534,10 @@
             // rbdiscrete
             // 
             this.rbdiscrete.AutoSize = true;
-            this.rbdiscrete.Location = new System.Drawing.Point(161, 57);
+            this.rbdiscrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbdiscrete.Location = new System.Drawing.Point(14, 188);
             this.rbdiscrete.Name = "rbdiscrete";
-            this.rbdiscrete.Size = new System.Drawing.Size(109, 20);
+            this.rbdiscrete.Size = new System.Drawing.Size(116, 21);
             this.rbdiscrete.TabIndex = 13;
             this.rbdiscrete.TabStop = true;
             this.rbdiscrete.Text = "Discrete Input";
@@ -516,9 +547,10 @@
             // rbcoil
             // 
             this.rbcoil.AutoSize = true;
-            this.rbcoil.Location = new System.Drawing.Point(161, 28);
+            this.rbcoil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbcoil.Location = new System.Drawing.Point(13, 162);
             this.rbcoil.Name = "rbcoil";
-            this.rbcoil.Size = new System.Drawing.Size(51, 20);
+            this.rbcoil.Size = new System.Drawing.Size(52, 21);
             this.rbcoil.TabIndex = 11;
             this.rbcoil.TabStop = true;
             this.rbcoil.Text = "Coil";
@@ -528,9 +560,10 @@
             // rbinput
             // 
             this.rbinput.AutoSize = true;
-            this.rbinput.Location = new System.Drawing.Point(16, 57);
+            this.rbinput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbinput.Location = new System.Drawing.Point(13, 136);
             this.rbinput.Name = "rbinput";
-            this.rbinput.Size = new System.Drawing.Size(110, 20);
+            this.rbinput.Size = new System.Drawing.Size(117, 21);
             this.rbinput.TabIndex = 12;
             this.rbinput.TabStop = true;
             this.rbinput.Text = "Input Register";
@@ -541,19 +574,23 @@
             // 
             this.groupBox5.Controls.Add(this.rbholding);
             this.groupBox5.Controls.Add(this.rbinput);
-            this.groupBox5.Controls.Add(this.btnread);
             this.groupBox5.Controls.Add(this.rbcoil);
             this.groupBox5.Controls.Add(this.rbdiscrete);
-            this.groupBox5.Location = new System.Drawing.Point(273, 377);
+            this.groupBox5.Controls.Add(this.txtnopoint);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.txtstartadd);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox5.Location = new System.Drawing.Point(32, 347);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(277, 139);
+            this.groupBox5.Size = new System.Drawing.Size(279, 217);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Step 2a";
+            this.groupBox5.Text = "Read";
             // 
             // btnwritefalse
             // 
-            this.btnwritefalse.Location = new System.Drawing.Point(145, 65);
+            this.btnwritefalse.Location = new System.Drawing.Point(302, 50);
             this.btnwritefalse.Name = "btnwritefalse";
             this.btnwritefalse.Size = new System.Drawing.Size(124, 23);
             this.btnwritefalse.TabIndex = 17;
@@ -582,6 +619,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Controls.Add(this.btnmultireg);
             this.groupBox6.Controls.Add(this.txtregisteradd);
             this.groupBox6.Controls.Add(this.label14);
             this.groupBox6.Controls.Add(this.label13);
@@ -591,12 +630,31 @@
             this.groupBox6.Controls.Add(this.btnwritefalse);
             this.groupBox6.Controls.Add(this.btnwriteregister);
             this.groupBox6.Controls.Add(this.txtregister);
-            this.groupBox6.Location = new System.Drawing.Point(273, 530);
+            this.groupBox6.Location = new System.Drawing.Point(393, 77);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(286, 237);
+            this.groupBox6.Size = new System.Drawing.Size(461, 483);
             this.groupBox6.TabIndex = 39;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Step 2b";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 208);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(255, 16);
+            this.label5.TabIndex = 43;
+            this.label5.Text = "(values should be seperated by commas)";
+            // 
+            // btnmultireg
+            // 
+            this.btnmultireg.Location = new System.Drawing.Point(40, 227);
+            this.btnmultireg.Name = "btnmultireg";
+            this.btnmultireg.Size = new System.Drawing.Size(200, 23);
+            this.btnmultireg.TabIndex = 42;
+            this.btnmultireg.Text = "Write Multiple Registers";
+            this.btnmultireg.UseVisualStyleBackColor = true;
+            this.btnmultireg.Click += new System.EventHandler(this.btnmultireg_Click);
             // 
             // txtregisteradd
             // 
@@ -606,6 +664,7 @@
             this.txtregisteradd.Size = new System.Drawing.Size(132, 22);
             this.txtregisteradd.TabIndex = 18;
             this.txtregisteradd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtregisteradd.TextChanged += new System.EventHandler(this.txtregisteradd_TextChanged);
             // 
             // label14
             // 
@@ -631,6 +690,7 @@
             this.txtcoiladd.Name = "txtcoiladd";
             this.txtcoiladd.Size = new System.Drawing.Size(132, 22);
             this.txtcoiladd.TabIndex = 15;
+            this.txtcoiladd.TextChanged += new System.EventHandler(this.txtcoiladd_TextChanged);
             // 
             // btnviewlog
             // 
@@ -696,7 +756,7 @@
             this.groupBox7.Controls.Add(this.lblrefresh);
             this.groupBox7.Controls.Add(this.label9);
             this.groupBox7.Controls.Add(this.btnviewlog);
-            this.groupBox7.Location = new System.Drawing.Point(702, 101);
+            this.groupBox7.Location = new System.Drawing.Point(84, 58);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(275, 396);
             this.groupBox7.TabIndex = 48;
@@ -705,18 +765,20 @@
             // 
             // txtoutput
             // 
-            this.txtoutput.Location = new System.Drawing.Point(17, 21);
+            this.txtoutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtoutput.Location = new System.Drawing.Point(17, 27);
             this.txtoutput.Multiline = true;
             this.txtoutput.Name = "txtoutput";
             this.txtoutput.ReadOnly = true;
             this.txtoutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtoutput.Size = new System.Drawing.Size(266, 277);
+            this.txtoutput.Size = new System.Drawing.Size(266, 372);
             this.txtoutput.TabIndex = 49;
             this.txtoutput.TextChanged += new System.EventHandler(this.txtoutput_TextChanged);
             // 
             // txtcopyclip
             // 
-            this.txtcopyclip.Location = new System.Drawing.Point(17, 304);
+            this.txtcopyclip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtcopyclip.Location = new System.Drawing.Point(17, 405);
             this.txtcopyclip.Name = "txtcopyclip";
             this.txtcopyclip.Size = new System.Drawing.Size(266, 23);
             this.txtcopyclip.TabIndex = 50;
@@ -726,7 +788,8 @@
             // 
             // txtclear
             // 
-            this.txtclear.Location = new System.Drawing.Point(17, 333);
+            this.txtclear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtclear.Location = new System.Drawing.Point(17, 434);
             this.txtclear.Name = "txtclear";
             this.txtclear.Size = new System.Drawing.Size(266, 23);
             this.txtclear.TabIndex = 51;
@@ -739,27 +802,142 @@
             this.groupBox8.Controls.Add(this.txtoutput);
             this.groupBox8.Controls.Add(this.txtclear);
             this.groupBox8.Controls.Add(this.txtcopyclip);
-            this.groupBox8.Location = new System.Drawing.Point(677, 503);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox8.Location = new System.Drawing.Point(558, 197);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(300, 401);
+            this.groupBox8.Size = new System.Drawing.Size(300, 487);
             this.groupBox8.TabIndex = 52;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Readings";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl1.ItemSize = new System.Drawing.Size(25, 100);
+            this.tabControl1.Location = new System.Drawing.Point(12, 61);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1017, 778);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl1.TabIndex = 53;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox9);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.btnread);
+            this.tabPage2.Controls.Add(this.btnmainwrite);
+            this.tabPage2.Controls.Add(this.groupBox8);
+            this.tabPage2.Controls.Add(this.groupBox5);
+            this.tabPage2.Location = new System.Drawing.Point(104, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(909, 770);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Modbus";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label16);
+            this.groupBox9.Controls.Add(this.label15);
+            this.groupBox9.Controls.Add(this.txtaddressbox);
+            this.groupBox9.Controls.Add(this.txtmainwrite);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox9.Location = new System.Drawing.Point(32, 585);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(279, 169);
+            this.groupBox9.TabIndex = 54;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Write";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label16.Location = new System.Drawing.Point(10, 80);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(118, 17);
+            this.label16.TabIndex = 58;
+            this.label16.Text = "Value(s) to write :";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label15.Location = new System.Drawing.Point(10, 32);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(121, 17);
+            this.label15.TabIndex = 57;
+            this.label15.Text = "Starting Address: ";
+            // 
+            // txtaddressbox
+            // 
+            this.txtaddressbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtaddressbox.Location = new System.Drawing.Point(134, 29);
+            this.txtaddressbox.Name = "txtaddressbox";
+            this.txtaddressbox.Size = new System.Drawing.Size(139, 23);
+            this.txtaddressbox.TabIndex = 56;
+            // 
+            // txtmainwrite
+            // 
+            this.txtmainwrite.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtmainwrite.Location = new System.Drawing.Point(131, 80);
+            this.txtmainwrite.Multiline = true;
+            this.txtmainwrite.Name = "txtmainwrite";
+            this.txtmainwrite.Size = new System.Drawing.Size(142, 70);
+            this.txtmainwrite.TabIndex = 53;
+            this.txtmainwrite.TextChanged += new System.EventHandler(this.txtmainwrite_TextChanged);
+            // 
+            // btnmainwrite
+            // 
+            this.btnmainwrite.Location = new System.Drawing.Point(338, 644);
+            this.btnmainwrite.Name = "btnmainwrite";
+            this.btnmainwrite.Size = new System.Drawing.Size(156, 75);
+            this.btnmainwrite.TabIndex = 55;
+            this.btnmainwrite.Text = "Write";
+            this.btnmainwrite.UseVisualStyleBackColor = true;
+            this.btnmainwrite.Click += new System.EventHandler(this.btnmainwrite_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Location = new System.Drawing.Point(104, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1173, 770);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Maestro";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox7);
+            this.tabPage3.Controls.Add(this.btnsavecnfg);
+            this.tabPage3.Controls.Add(this.groupBox6);
+            this.tabPage3.Controls.Add(this.btnloadcnfg);
+            this.tabPage3.Location = new System.Drawing.Point(104, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1173, 770);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Deneme Özellikleri";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 1048);
-            this.Controls.Add(this.groupBox8);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1037, 843);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "SentiPort v1.0.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -782,6 +960,12 @@
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -848,6 +1032,19 @@
         private System.Windows.Forms.Button txtcopyclip;
         private System.Windows.Forms.Button txtclear;
         private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnmultireg;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btndisconnect;
+        private System.Windows.Forms.TextBox txtmainwrite;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button btnmainwrite;
+        private System.Windows.Forms.TextBox txtaddressbox;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }
 
