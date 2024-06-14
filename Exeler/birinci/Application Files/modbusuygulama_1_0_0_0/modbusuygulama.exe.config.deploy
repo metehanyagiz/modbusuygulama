@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+            <section name="modbusuygulama.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+    <userSettings>
+        <modbusuygulama.Properties.Settings>
+            <setting name="ipadresi" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="portdeger" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="registervalue" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="startadresi" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="numberofpoi" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="slavid" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="anaadres" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="anadegerler" serializeAs="String">
+                <value />
+            </setting>
+        </modbusuygulama.Properties.Settings>
+    </userSettings>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Runtime.CompilerServices.Unsafe" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>
