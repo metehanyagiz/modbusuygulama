@@ -81,6 +81,18 @@
             this.txtmainwrite = new System.Windows.Forms.TextBox();
             this.btnmainwrite = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnresettcp = new System.Windows.Forms.Button();
+            this.btnreadfile = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btndisconnect_tcp = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnconnect_tcp = new System.Windows.Forms.Button();
+            this.txtip_tcp = new System.Windows.Forms.TextBox();
+            this.txtport_tcp = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -92,6 +104,8 @@
             this.tabPage2.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -506,11 +520,6 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Read";
             // 
-            // timer1
-            // 
-
-
-            // 
             // txtoutput
             // 
             this.txtoutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -563,6 +572,7 @@
             this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.ItemSize = new System.Drawing.Size(25, 100);
             this.tabControl1.Location = new System.Drawing.Point(12, 61);
@@ -675,6 +685,131 @@
             this.tabPage1.Text = "MAESTRO";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.btnresettcp);
+            this.tabPage3.Controls.Add(this.btnreadfile);
+            this.tabPage3.Controls.Add(this.groupBox6);
+            this.tabPage3.Location = new System.Drawing.Point(104, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(864, 681);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "TCP";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(551, 218);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(233, 351);
+            this.textBox1.TabIndex = 35;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnresettcp
+            // 
+            this.btnresettcp.BackColor = System.Drawing.Color.Yellow;
+            this.btnresettcp.Location = new System.Drawing.Point(245, 289);
+            this.btnresettcp.Name = "btnresettcp";
+            this.btnresettcp.Size = new System.Drawing.Size(145, 74);
+            this.btnresettcp.TabIndex = 34;
+            this.btnresettcp.Text = "Reset";
+            this.btnresettcp.UseVisualStyleBackColor = false;
+            this.btnresettcp.Click += new System.EventHandler(this.btnresettcp_Click);
+            // 
+            // btnreadfile
+            // 
+            this.btnreadfile.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnreadfile.Location = new System.Drawing.Point(29, 289);
+            this.btnreadfile.Name = "btnreadfile";
+            this.btnreadfile.Size = new System.Drawing.Size(145, 74);
+            this.btnreadfile.TabIndex = 33;
+            this.btnreadfile.Text = "Choose file and Send";
+            this.btnreadfile.UseVisualStyleBackColor = false;
+            this.btnreadfile.Click += new System.EventHandler(this.btnreadfile_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btndisconnect_tcp);
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Controls.Add(this.btnconnect_tcp);
+            this.groupBox6.Controls.Add(this.txtip_tcp);
+            this.groupBox6.Controls.Add(this.txtport_tcp);
+            this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Controls.Add(this.label9);
+            this.groupBox6.Location = new System.Drawing.Point(29, 60);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(361, 192);
+            this.groupBox6.TabIndex = 32;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Connect";
+            // 
+            // btndisconnect_tcp
+            // 
+            this.btndisconnect_tcp.BackColor = System.Drawing.Color.Red;
+            this.btndisconnect_tcp.Location = new System.Drawing.Point(217, 119);
+            this.btndisconnect_tcp.Name = "btndisconnect_tcp";
+            this.btndisconnect_tcp.Size = new System.Drawing.Size(98, 54);
+            this.btndisconnect_tcp.TabIndex = 47;
+            this.btndisconnect_tcp.Text = "Disconnect";
+            this.btndisconnect_tcp.UseVisualStyleBackColor = false;
+            this.btndisconnect_tcp.Click += new System.EventHandler(this.btndisconnect_tcp_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(236, 16);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Enter necessary information to connect";
+            // 
+            // btnconnect_tcp
+            // 
+            this.btnconnect_tcp.BackColor = System.Drawing.Color.Green;
+            this.btnconnect_tcp.Location = new System.Drawing.Point(41, 119);
+            this.btnconnect_tcp.Name = "btnconnect_tcp";
+            this.btnconnect_tcp.Size = new System.Drawing.Size(100, 54);
+            this.btnconnect_tcp.TabIndex = 9;
+            this.btnconnect_tcp.Text = "Connect";
+            this.btnconnect_tcp.UseVisualStyleBackColor = false;
+            this.btnconnect_tcp.Click += new System.EventHandler(this.btnconnect_tcp_Click);
+            // 
+            // txtip_tcp
+            // 
+            this.txtip_tcp.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtip_tcp.Location = new System.Drawing.Point(41, 76);
+            this.txtip_tcp.Name = "txtip_tcp";
+            this.txtip_tcp.Size = new System.Drawing.Size(100, 22);
+            this.txtip_tcp.TabIndex = 4;
+            this.txtip_tcp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtport_tcp
+            // 
+            this.txtport_tcp.Location = new System.Drawing.Point(217, 76);
+            this.txtport_tcp.Name = "txtport_tcp";
+            this.txtport_tcp.Size = new System.Drawing.Size(98, 22);
+            this.txtport_tcp.TabIndex = 5;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 76);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(25, 16);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "IP :";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(174, 76);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 16);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Port :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -708,6 +843,10 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -765,6 +904,18 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnreset;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btndisconnect_tcp;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnconnect_tcp;
+        private System.Windows.Forms.TextBox txtip_tcp;
+        private System.Windows.Forms.TextBox txtport_tcp;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnreadfile;
+        private System.Windows.Forms.Button btnresettcp;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

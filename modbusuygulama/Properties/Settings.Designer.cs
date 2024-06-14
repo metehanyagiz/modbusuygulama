@@ -106,5 +106,41 @@ namespace modbusuygulama.Properties {
                 this["anadegerler"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string iptcp {
+            get {
+                return ((string)(this["iptcp"]));
+            }
+            set {
+                this["iptcp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string porttcp {
+            get {
+                return ((string)(this["porttcp"]));
+            }
+            set {
+                this["porttcp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string filepathttcp {
+            get {
+                return ((string)(this["filepathttcp"]));
+            }
+            set {
+                this["filepathttcp"] = value;
+            }
+        }
     }
 }

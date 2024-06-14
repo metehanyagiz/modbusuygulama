@@ -18,7 +18,7 @@ namespace modbusuygulama
     {
         private IModbusMaster master;
         private TcpClient tcpClient;
-        private int countdown;
+        private NetworkStream stream;
        
         public Form1()
         {
@@ -29,7 +29,6 @@ namespace modbusuygulama
             lblconnection.Text = "Disconnected";
             this.FormClosing += new FormClosingEventHandler(Form1_Load);
             this.Load += new EventHandler(Form1_Load);
-            countdown = 5;
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
 
@@ -77,6 +76,8 @@ namespace modbusuygulama
             txtaddressbox.Text = Properties.Settings.Default.anaadres;
             txtnopoint.Text = Properties.Settings.Default.numberofpoi;
             txtstartadd.Text = Properties.Settings.Default.startadresi;
+            txtip_tcp.Text = Properties.Settings.Default.iptcp;
+            txtport_tcp.Text = Properties.Settings.Default.porttcp;
 
             txtmainwrite.Text = Properties.Settings.Default.anadegerler;
         }
@@ -224,7 +225,7 @@ namespace modbusuygulama
         private string lastregisterreading = string.Empty;
 
         
-        private void rbcoil_CheckedChanged(object sender, EventArgs e)
+        private void rbcoil_CheckedChanged(object sender, EventArgs e)   
         {
 
         }
@@ -244,10 +245,13 @@ namespace modbusuygulama
 
         }
 
-        //kapanırken değerleri kaydetme
+        //kapanırken değerleri kaydetme ve tcp bağlantı koparma
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if(stream != null)
+                stream.Close();
+            if(tcpClient!= null) 
+                tcpClient.Close();
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 var result = MessageBox.Show("Do you want to keep your current values for next time?", "Save Settings", MessageBoxButtons.YesNo);
@@ -260,6 +264,8 @@ namespace modbusuygulama
                     Properties.Settings.Default.anaadres = txtaddressbox.Text;
                     Properties.Settings.Default.numberofpoi=txtnopoint.Text;
                     Properties.Settings.Default.startadresi=txtstartadd.Text;
+                    Properties.Settings.Default.iptcp = txtip_tcp.Text;
+                    Properties.Settings.Default.porttcp = txtport_tcp.Text;
 
                     Properties.Settings.Default.Save();
                 }
@@ -271,6 +277,8 @@ namespace modbusuygulama
                     Properties.Settings.Default.anaadres=null;
                     Properties.Settings.Default.numberofpoi = null;
                     Properties.Settings.Default.startadresi = null;
+                    Properties.Settings.Default.iptcp = null;
+                    Properties.Settings.Default.porttcp = null;
 
                     Properties.Settings.Default.Save();
                 }
@@ -283,6 +291,9 @@ namespace modbusuygulama
                 Properties.Settings.Default.anaadres = txtaddressbox.Text;
                 Properties.Settings.Default.numberofpoi = txtnopoint.Text;
                 Properties.Settings.Default.startadresi = txtstartadd.Text;
+                Properties.Settings.Default.iptcp= txtip_tcp.Text;
+                Properties.Settings.Default.porttcp=txtport_tcp.Text;
+
 
                 Properties.Settings.Default.Save();
             }
@@ -511,6 +522,144 @@ namespace modbusuygulama
 
         }
 
+
+        //tcp connect
+        private void btnconnect_tcp_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                string ipaddress = txtip_tcp.Text;
+                lblipaddress.Text = ipaddress;
+                int port = int.Parse(txtport_tcp.Text);
+                tcpClient = new TcpClient(ipaddress, port);
+                stream = tcpClient.GetStream();
+                groupBox3.BackColor = Color.Green;
+                lblconnection.Text = "Connected";
+                
+            }
+            catch (Exception ex)
+            {
+
+                lblconnection.Text = "Disconnected";
+                MessageBox.Show($"Error: {ex.Message}");
+                groupBox3.BackColor = Color.Red;
+            }
+        }
+
+        //tcp disconnect
+        private void btndisconnect_tcp_Click(object sender, EventArgs e)
+        {
+            if (stream != null)
+            {
+                stream.Dispose();
+                stream = null;
+                
+                lblconnection.Text = "Disconnected";
+                groupBox3.BackColor = Color.Red;
+            }
+            if (tcpClient != null)
+            {
+                tcpClient.Dispose();
+                tcpClient = null;
+            }
+            else
+            {
+                MessageBox.Show("Already disconnected.");
+            }
+        }
+
+        //tcp seçilen dosyadan ilk 54 byte okuma ve gönderme, gelen cevaba göre kalanı gönderme
+        private void btnreadfile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openfiledialog = new OpenFileDialog();
+                openfiledialog.Filter = "SNTL files (*.sntl)|*.sntl|All files (*.*)|*.*";
+
+                if (openfiledialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filepath = openfiledialog.FileName;
+
+
+                    using (FileStream fstrm =new FileStream(filepath, FileMode.Open, FileAccess.Read))
+                    {
+                        byte[] first54 = new byte[54];
+                        fstrm.Read(first54, 0, 54);
+
+                        string response = sendbytes(first54);
+
+                        if (response == "ACCEPTED")
+                        {
+                            sendotherbytes(fstrm);
+                        }
+                        else
+                        {
+
+                            groupBox3.BackColor = Color.Red;
+                            lblconnection.Text = "Disconnected";
+                        }
+
+                    }
+
+
+                }
+               
+            }
+            catch (Exception ex) 
+            {
+
+                MessageBox.Show($"An error occured: {ex.Message}");
+            }
+        }
+
+        private string sendbytes(byte[] data)
+        {
+            try
+            {
+                stream.Write(data, 0, data.Length);
+
+                tcpClient.ReceiveTimeout = 5000; // ACCEPTED mesajını ne kadar bekleyecek, süre dolunca connection terminated
+
+                byte[] responsebuff = new byte[1024];
+                int byteread = stream.Read(responsebuff, 0, responsebuff.Length);
+                string response = Encoding.ASCII.GetString(responsebuff, 0, byteread);
+                return response;
+            }
+            catch (Exception ex) {
+            MessageBox.Show($"An error occured while sending data: {ex.Message}");
+                return null;
+            }
+        }
+        private void sendotherbytes(FileStream fstrm)
+        {
+            try
+            {
+                byte[] buffer = new byte[1024];
+                int byteread;
+
+                while((byteread=fstrm.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    stream.Write(buffer, 0, byteread);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occured while sending rest of the data: {ex.Message}");
+            }
+        }
+
+        //tcp sekmesindeki textboxları sıfırlama
+        private void btnresettcp_Click(object sender, EventArgs e)
+        {
+            txtport_tcp.Text = string.Empty;
+            txtip_tcp.Text = string.Empty;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
