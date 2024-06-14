@@ -30,8 +30,6 @@ namespace modbusuygulama
             this.FormClosing += new FormClosingEventHandler(Form1_Load);
             this.Load += new EventHandler(Form1_Load);
             countdown = 5;
-            timer1.Tick += new EventHandler(timer1_Tick);
-            chkautorefresh.CheckedChanged += new EventHandler(chkautorefresh_CheckedChanged);
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
 
@@ -52,7 +50,7 @@ namespace modbusuygulama
             {
 
                 // Draw a different background color, and don't paint a focus rectangle.
-                _textBrush = new SolidBrush(Color.Red);
+                _textBrush = new SolidBrush(Color.DarkBlue);
                 g.FillRectangle(Brushes.Gray, e.Bounds);
             }
             else
@@ -79,16 +77,11 @@ namespace modbusuygulama
             txtaddressbox.Text = Properties.Settings.Default.anaadres;
             txtnopoint.Text = Properties.Settings.Default.numberofpoi;
             txtstartadd.Text = Properties.Settings.Default.startadresi;
-            txtslaveid.Text = Properties.Settings.Default.slavid;
+
             txtmainwrite.Text = Properties.Settings.Default.anadegerler;
         }
 
         private void combochannel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblipaddress_Click(object sender, EventArgs e)
         {
 
         }
@@ -103,7 +96,6 @@ namespace modbusuygulama
                 int port = int.Parse(txtport.Text);
                 tcpClient = new TcpClient(ipaddress, port);
                 master = ModbusIpMaster.CreateIp(tcpClient);
-                Logger.Log("Connected to Modbus device at "+ ipaddress+":"+ port );
                 groupBox3.BackColor = Color.Green;
                 lblconnection.Text = "Connected";
 
@@ -113,15 +105,12 @@ namespace modbusuygulama
 
                 lblconnection.Text = "Disconnected";
                 MessageBox.Show($"Error: {ex.Message}");
-                Logger.Log("An error occured while connecting to Modbus device: " + ex.Message);
                 groupBox3.BackColor=Color.Red;
             }
         }
 
-
         //seçilen radiobutton'a göre değer okuma 
         private void btnread_Click(object sender, EventArgs e)
-
 
         {
             if (rbholding.Checked)
@@ -154,7 +143,7 @@ namespace modbusuygulama
                     MessageBox.Show("Not connected to any Modbus device.");
                     return;
                 }
-                byte slaveId = byte.Parse(txtslaveid.Text);
+                byte slaveId = 1;
                 ushort startAddress = ushort.Parse(txtstartadd.Text);
                 ushort numberofpoints = ushort.Parse(txtnopoint.Text);
                 ushort[] registers;
@@ -170,7 +159,6 @@ namespace modbusuygulama
                     for (int i = 0; i< registers.Length; i++)
                     {
                         sonucsirala.AppendLine($"Register {startAddress+i}: {registers[i]}");
-
 
                     }
 
@@ -190,7 +178,6 @@ namespace modbusuygulama
                     {
                         sonucsirala.AppendLine($"Register {startAddress + i}: {registers[i]}");
 
-
                     }
                     txtoutput.AppendText(sonucsirala.ToString());
                     lastregisterreading = sonucsirala.ToString();
@@ -208,7 +195,6 @@ namespace modbusuygulama
                     {
                         sonucsirala.AppendLine($"Register {startAddress + i}: {values[i]}");
 
-
                     }
                     txtoutput.AppendText(sonucsirala.ToString());
                     lastregisterreading = sonucsirala.ToString();
@@ -224,7 +210,6 @@ namespace modbusuygulama
                     {
                         sonucsirala.AppendLine($"Register {startAddress + i}: {values[i]}");
 
-
                     }
                     txtoutput.AppendText(sonucsirala.ToString());
                     lastregisterreading = sonucsirala.ToString();
@@ -238,51 +223,7 @@ namespace modbusuygulama
         //son reading'i kopyalama için gereken atama
         private string lastregisterreading = string.Empty;
 
-        //profil kaydetme özelliği
-        private void saveconfig(string filepath)
-        {
-            var config = new Config
-            {
-                ipcnfg = txtipaddress.Text,
-                portcnfg = txtport.Text,
-                anaadrescnfg = txtaddressbox.Text,
-                nopointcnfg = txtnopoint.Text,
-                startaddcnfg = txtstartadd.Text,
-                slaveidcnfg = txtslaveid.Text,
-                anadegerlercnfg=txtmainwrite.Text,
-            };
-            string jsonstring= JsonSerializer.Serialize(config);
-            File.WriteAllText(filepath, jsonstring);
-        }
-        private void loadconfig(string filepath)
-        {
-            string jsonstring= File.ReadAllText(filepath);
-            var config=JsonSerializer.Deserialize<Config>(jsonstring);
-
-            txtipaddress.Text = config.ipcnfg;
-            txtport.Text = config.portcnfg;
-            txtaddressbox.Text=config.anaadrescnfg;
-            txtnopoint.Text=config.nopointcnfg;
-            txtstartadd.Text=config.startaddcnfg;
-            txtslaveid.Text=config.slaveidcnfg;
-            txtmainwrite.Text = config.anadegerlercnfg;
-        }
-        public class Config
-        {
-            public string ipcnfg { get; set; }
-            public string portcnfg { get; set; }
-            public string nopointcnfg {  get; set; }
-            public string startaddcnfg { get; set; }
-            public string slaveidcnfg {  get; set; }
-            public string anaadrescnfg {  get; set; }
-            public string anadegerlercnfg {  get; set; }
-        }    
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
         
-
         private void rbcoil_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -299,12 +240,6 @@ namespace modbusuygulama
         }
 
         private void rbdiscrete_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-      
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -325,7 +260,7 @@ namespace modbusuygulama
                     Properties.Settings.Default.anaadres = txtaddressbox.Text;
                     Properties.Settings.Default.numberofpoi=txtnopoint.Text;
                     Properties.Settings.Default.startadresi=txtstartadd.Text;
-                    Properties.Settings.Default.slavid=txtslaveid.Text;
+
                     Properties.Settings.Default.Save();
                 }
                 else
@@ -348,7 +283,7 @@ namespace modbusuygulama
                 Properties.Settings.Default.anaadres = txtaddressbox.Text;
                 Properties.Settings.Default.numberofpoi = txtnopoint.Text;
                 Properties.Settings.Default.startadresi = txtstartadd.Text;
-                Properties.Settings.Default.slavid = txtslaveid.Text;
+
                 Properties.Settings.Default.Save();
             }
         }
@@ -368,78 +303,6 @@ namespace modbusuygulama
         {
 
         }
-        //log ozelliği 
-        private void btnviewlog_Click(object sender, EventArgs e)
-        {
-            scrolllog();
-            timer1.Start();
-            lblrefresh.Text= countdown.ToString();
-            countdown = 5;
-            btnviewlog.Visible = false;
-            
-        }
-
-        private void scrolllog()
-        {
-            txtlog.Text= Logger.readlog();
-            if(chkautorefresh.Checked )
-            {
-                txtlog.SelectionStart = txtlog.Text.Length;
-                txtlog.ScrollToCaret();
-            }
-
-        }
-
-        //profil kaydetme devamı
-        private void btnsavecnfg_Click(object sender, EventArgs e)
-        {
-            string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "config.json");
-            saveconfig(filepath);
-            Logger.Log("Configuration saved to "+ filepath);
-        }
-
-        private void btnloadcnfg_Click(object sender, EventArgs e)
-        {
-            string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "config.json");
-            if (File.Exists(filepath))
-            {
-                loadconfig(filepath);
-                Logger.Log("Configuration loaded from " + filepath);
-            }
-            else
-            {
-                MessageBox.Show("Configuration file not found.");
-            }
-        }
-        //log'u kaydırma için timer
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (countdown <= 0)
-            {
-                scrolllog();
-                countdown=5;
-            }
-            else
-            {
-                countdown--;
-            }
-            lblrefresh.Text = countdown.ToString();
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblrefresh_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkautorefresh_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
 
         private void label4_Click(object sender, EventArgs e)
         {
@@ -447,11 +310,6 @@ namespace modbusuygulama
         }
 
         private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtdata_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -495,14 +353,7 @@ namespace modbusuygulama
         {
 
         }
-
-  
-
-        private void txtregisteradd_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        
+     
         //disconnect butonu
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -549,11 +400,11 @@ namespace modbusuygulama
                             return;
                         }
 
-                        byte slaveId = byte.Parse(txtslaveid.Text);
+                        byte slaveId = 1;
                         ushort coiladdress = ushort.Parse(txtaddressbox.Text);
                         bool coilvalue = bool.Parse(txtmainwrite.Text);
                         master.WriteSingleCoil(slaveId, coiladdress, coilvalue);
-                        MessageBox.Show("Coil written succesfully");
+                        
                     }
                     catch (Exception ex)
                     {
@@ -572,7 +423,7 @@ namespace modbusuygulama
                             return;
                         }
 
-                        byte slaveId = byte.Parse(txtslaveid.Text);
+                        byte slaveId = 1;
                         ushort coiladdress = ushort.Parse(txtaddressbox.Text);
                         string[] values = txtmainwrite.Text.Split(new char[] { ',' });
                         bool[] coilvalue= new bool[values.Length];
@@ -583,7 +434,7 @@ namespace modbusuygulama
 
 
                         master.WriteMultipleCoils(slaveId, coiladdress, coilvalue);
-                        MessageBox.Show("Coil written succesfully");
+                        
                     }
                     catch (Exception ex)
                     {
@@ -600,11 +451,11 @@ namespace modbusuygulama
                     return;
                 }
 
-                byte slaveId = byte.Parse(txtslaveid.Text);
+                byte slaveId = 1;
                 ushort registeraddress = ushort.Parse(txtaddressbox.Text);
                 ushort registervalue = ushort.Parse(txtmainwrite.Text);
                 master.WriteSingleRegister(slaveId, registeraddress, registervalue);
-                MessageBox.Show("Register written succesfully.");
+                
             }
             else if (Regex.IsMatch(input, multiregisterpattern))
             {
@@ -615,7 +466,7 @@ namespace modbusuygulama
                 }
                 try
                 {
-                    byte slaveid = byte.Parse(txtslaveid.Text);
+                    byte slaveid = 1;
                     string[] values = txtmainwrite.Text.Split(',');
                     ushort[] regvalues = new ushort[values.Length];
                     ushort registeraddress = ushort.Parse(txtaddressbox.Text);
@@ -628,7 +479,7 @@ namespace modbusuygulama
                         }
                     }
                     master.WriteMultipleRegisters(slaveid, registeraddress, regvalues);
-                    MessageBox.Show("Register written succesfully.");
+                    
 
                 }
                 catch (Exception ex)
@@ -640,11 +491,6 @@ namespace modbusuygulama
         }
 
         private void txtmainwrite_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtcoiladd_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -664,24 +510,9 @@ namespace modbusuygulama
             txtstartadd.Text = string.Empty;
 
         }
+
     }
 
-    //log için olan fonk
-    public static class Logger
-    {
-        private static string logfilepath = "application.log";
-        public static void Log(string message)
-        {
-            using (StreamWriter writer = new StreamWriter(logfilepath, true))
-            {
-                writer.WriteLine($"{DateTime.Now}:{message}");
-            }
-        }
-        public static string readlog()
-        {
-            return File.ReadAllText(logfilepath);
-        }
-    }
 }
 
 

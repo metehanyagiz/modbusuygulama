@@ -17,9 +17,6 @@
     <Setting Name="numberofpoi" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="slavid" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="anaadres" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
