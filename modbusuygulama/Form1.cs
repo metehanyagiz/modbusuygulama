@@ -619,11 +619,11 @@ namespace modbusuygulama
             {
                 stream.Write(data, 0, data.Length);
 
-                tcpClient.ReceiveTimeout = 5000; // ACCEPTED mesajını ne kadar bekleyecek, süre dolunca connection terminated
+                tcpClient.ReceiveTimeout = 2000; // ACCEPTED mesajını ne kadar bekleyecek, süre dolunca connection terminated
 
                 byte[] responsebuff = new byte[1024];
                 int byteread = stream.Read(responsebuff, 0, responsebuff.Length);
-                string response = Encoding.ASCII.GetString(responsebuff, 0, byteread);
+                string response = Encoding.UTF8.GetString(responsebuff, 0, byteread);
                 return response;
             }
             catch (Exception ex) {
@@ -656,10 +656,7 @@ namespace modbusuygulama
             txtip_tcp.Text = string.Empty;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 
 }

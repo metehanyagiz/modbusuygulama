@@ -82,7 +82,6 @@
             this.btnmainwrite = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnresettcp = new System.Windows.Forms.Button();
             this.btnreadfile = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -687,7 +686,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox1);
             this.tabPage3.Controls.Add(this.btnresettcp);
             this.tabPage3.Controls.Add(this.btnreadfile);
             this.tabPage3.Controls.Add(this.groupBox6);
@@ -697,15 +695,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "TCP";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(551, 218);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(233, 351);
-            this.textBox1.TabIndex = 35;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnresettcp
             // 
@@ -844,7 +833,6 @@
             this.groupBox9.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
@@ -915,7 +903,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnreadfile;
         private System.Windows.Forms.Button btnresettcp;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
