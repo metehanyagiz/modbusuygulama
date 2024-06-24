@@ -618,6 +618,7 @@ namespace modbusuygulama
                 while((byteread=fstrm.Read(buffer, 0, buffer.Length)) > 0)
                 {
                     stream.Write(buffer, 0, byteread);
+                    Thread.Sleep(300);
                 }
             }
             catch (Exception ex)
@@ -658,6 +659,7 @@ namespace modbusuygulama
                     groupBox3.BackColor = Color.Red;
                     lblconnection.Text = "Disconnected";
                     richTextBox1.Text = "Not ACCEPTED";
+                    MessageBox.Show($"Response is: {response}");
                 }
 
             }
