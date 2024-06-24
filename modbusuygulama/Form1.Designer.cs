@@ -92,6 +92,7 @@
             this.txtport_tcp = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -686,6 +687,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.richTextBox1);
             this.tabPage3.Controls.Add(this.txtfilepath);
             this.tabPage3.Controls.Add(this.btnsend);
             this.tabPage3.Controls.Add(this.btnresettcp);
@@ -820,6 +822,14 @@
             this.label9.TabIndex = 25;
             this.label9.Text = "Port :";
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(652, 179);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(100, 96);
+            this.richTextBox1.TabIndex = 37;
+            this.richTextBox1.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -926,6 +936,7 @@
         private System.Windows.Forms.Button btnresettcp;
         private System.Windows.Forms.Button btnsend;
         private System.Windows.Forms.TextBox txtfilepath;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

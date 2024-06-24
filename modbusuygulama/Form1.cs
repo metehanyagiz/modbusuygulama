@@ -536,7 +536,7 @@ namespace modbusuygulama
                 stream = tcpClient.GetStream();
                 groupBox3.BackColor = Color.Green;
                 lblconnection.Text = "Connected";
-                
+             
             }
             catch (Exception ex)
             {
@@ -632,6 +632,7 @@ namespace modbusuygulama
             txtport_tcp.Text = string.Empty;
             txtip_tcp.Text = string.Empty;
             txtfilepath.Text = string.Empty;
+            richTextBox1.Text   = string.Empty;
         }
 
         private void btnsend_Click(object sender, EventArgs e)
@@ -649,12 +650,14 @@ namespace modbusuygulama
                 if (response == "ACCEPTED")
                 {
                     sendotherbytes(fstrm);
+                    richTextBox1.Text = "ACCEPTED received";
                 }
                 else
                 {
 
                     groupBox3.BackColor = Color.Red;
                     lblconnection.Text = "Disconnected";
+                    richTextBox1.Text = "Not ACCEPTED";
                 }
 
             }
