@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.lblipaddress = new System.Windows.Forms.Label();
@@ -66,7 +65,6 @@
             this.rbcoil = new System.Windows.Forms.RadioButton();
             this.rbinput = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.txtoutput = new System.Windows.Forms.TextBox();
             this.txtcopyclip = new System.Windows.Forms.Button();
             this.txtclear = new System.Windows.Forms.Button();
@@ -82,6 +80,8 @@
             this.btnmainwrite = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtfilepath = new System.Windows.Forms.TextBox();
+            this.btnsend = new System.Windows.Forms.Button();
             this.btnresettcp = new System.Windows.Forms.Button();
             this.btnreadfile = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -264,7 +264,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(31, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 13);
+            this.label3.Size = new System.Drawing.Size(124, 16);
             this.label3.TabIndex = 14;
             this.label3.Text = "Maestro Information";
             // 
@@ -416,7 +416,7 @@
             this.txtnopoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtnopoint.Location = new System.Drawing.Point(131, 59);
             this.txtnopoint.Name = "txtnopoint";
-            this.txtnopoint.Size = new System.Drawing.Size(142, 20);
+            this.txtnopoint.Size = new System.Drawing.Size(142, 23);
             this.txtnopoint.TabIndex = 8;
             this.txtnopoint.TextChanged += new System.EventHandler(this.txtnopoint_TextChanged);
             // 
@@ -425,7 +425,7 @@
             this.txtstartadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtstartadd.Location = new System.Drawing.Point(131, 24);
             this.txtstartadd.Name = "txtstartadd";
-            this.txtstartadd.Size = new System.Drawing.Size(142, 20);
+            this.txtstartadd.Size = new System.Drawing.Size(142, 23);
             this.txtstartadd.TabIndex = 7;
             // 
             // label11
@@ -434,7 +434,7 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label11.Location = new System.Drawing.Point(10, 59);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 13);
+            this.label11.Size = new System.Drawing.Size(101, 17);
             this.label11.TabIndex = 45;
             this.label11.Text = "No. of Values :";
             // 
@@ -444,7 +444,7 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label10.Location = new System.Drawing.Point(10, 27);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 13);
+            this.label10.Size = new System.Drawing.Size(102, 17);
             this.label10.TabIndex = 44;
             this.label10.Text = "Start Address :";
             this.label10.Click += new System.EventHandler(this.label10_Click);
@@ -455,7 +455,7 @@
             this.rbholding.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.rbholding.Location = new System.Drawing.Point(13, 107);
             this.rbholding.Name = "rbholding";
-            this.rbholding.Size = new System.Drawing.Size(103, 17);
+            this.rbholding.Size = new System.Drawing.Size(134, 21);
             this.rbholding.TabIndex = 100;
             this.rbholding.TabStop = true;
             this.rbholding.Text = "Holding Register";
@@ -468,7 +468,7 @@
             this.rbdiscrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.rbdiscrete.Location = new System.Drawing.Point(14, 188);
             this.rbdiscrete.Name = "rbdiscrete";
-            this.rbdiscrete.Size = new System.Drawing.Size(91, 17);
+            this.rbdiscrete.Size = new System.Drawing.Size(116, 21);
             this.rbdiscrete.TabIndex = 13;
             this.rbdiscrete.TabStop = true;
             this.rbdiscrete.Text = "Discrete Input";
@@ -481,7 +481,7 @@
             this.rbcoil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.rbcoil.Location = new System.Drawing.Point(13, 162);
             this.rbcoil.Name = "rbcoil";
-            this.rbcoil.Size = new System.Drawing.Size(42, 17);
+            this.rbcoil.Size = new System.Drawing.Size(52, 21);
             this.rbcoil.TabIndex = 11;
             this.rbcoil.TabStop = true;
             this.rbcoil.Text = "Coil";
@@ -494,7 +494,7 @@
             this.rbinput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.rbinput.Location = new System.Drawing.Point(13, 136);
             this.rbinput.Name = "rbinput";
-            this.rbinput.Size = new System.Drawing.Size(91, 17);
+            this.rbinput.Size = new System.Drawing.Size(117, 21);
             this.rbinput.TabIndex = 12;
             this.rbinput.TabStop = true;
             this.rbinput.Text = "Input Register";
@@ -630,7 +630,7 @@
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label16.Location = new System.Drawing.Point(10, 80);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(88, 13);
+            this.label16.Size = new System.Drawing.Size(118, 17);
             this.label16.TabIndex = 58;
             this.label16.Text = "Value(s) to write :";
             // 
@@ -640,7 +640,7 @@
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label15.Location = new System.Drawing.Point(10, 32);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(90, 13);
+            this.label15.Size = new System.Drawing.Size(121, 17);
             this.label15.TabIndex = 57;
             this.label15.Text = "Starting Address: ";
             // 
@@ -649,7 +649,7 @@
             this.txtaddressbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtaddressbox.Location = new System.Drawing.Point(134, 29);
             this.txtaddressbox.Name = "txtaddressbox";
-            this.txtaddressbox.Size = new System.Drawing.Size(139, 20);
+            this.txtaddressbox.Size = new System.Drawing.Size(139, 23);
             this.txtaddressbox.TabIndex = 9;
             // 
             // txtmainwrite
@@ -686,6 +686,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.txtfilepath);
+            this.tabPage3.Controls.Add(this.btnsend);
             this.tabPage3.Controls.Add(this.btnresettcp);
             this.tabPage3.Controls.Add(this.btnreadfile);
             this.tabPage3.Controls.Add(this.groupBox6);
@@ -696,10 +698,29 @@
             this.tabPage3.Text = "TCP";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // txtfilepath
+            // 
+            this.txtfilepath.Location = new System.Drawing.Point(209, 301);
+            this.txtfilepath.Name = "txtfilepath";
+            this.txtfilepath.Size = new System.Drawing.Size(226, 22);
+            this.txtfilepath.TabIndex = 36;
+            this.txtfilepath.TextChanged += new System.EventHandler(this.txtfilepath_TextChanged);
+            // 
+            // btnsend
+            // 
+            this.btnsend.BackColor = System.Drawing.Color.Coral;
+            this.btnsend.Location = new System.Drawing.Point(29, 369);
+            this.btnsend.Name = "btnsend";
+            this.btnsend.Size = new System.Drawing.Size(141, 72);
+            this.btnsend.TabIndex = 35;
+            this.btnsend.Text = "Send";
+            this.btnsend.UseVisualStyleBackColor = false;
+            this.btnsend.Click += new System.EventHandler(this.btnsend_Click);
+            // 
             // btnresettcp
             // 
             this.btnresettcp.BackColor = System.Drawing.Color.Yellow;
-            this.btnresettcp.Location = new System.Drawing.Point(245, 289);
+            this.btnresettcp.Location = new System.Drawing.Point(245, 369);
             this.btnresettcp.Name = "btnresettcp";
             this.btnresettcp.Size = new System.Drawing.Size(145, 74);
             this.btnresettcp.TabIndex = 34;
@@ -714,7 +735,7 @@
             this.btnreadfile.Name = "btnreadfile";
             this.btnreadfile.Size = new System.Drawing.Size(145, 74);
             this.btnreadfile.TabIndex = 33;
-            this.btnreadfile.Text = "Choose file and Send";
+            this.btnreadfile.Text = "Choose file";
             this.btnreadfile.UseVisualStyleBackColor = false;
             this.btnreadfile.Click += new System.EventHandler(this.btnreadfile_Click);
             // 
@@ -833,6 +854,7 @@
             this.groupBox9.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
@@ -872,7 +894,6 @@
         private System.Windows.Forms.RadioButton rbcoil;
         private System.Windows.Forms.RadioButton rbinput;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtnopoint;
@@ -903,6 +924,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnreadfile;
         private System.Windows.Forms.Button btnresettcp;
+        private System.Windows.Forms.Button btnsend;
+        private System.Windows.Forms.TextBox txtfilepath;
     }
 }
 

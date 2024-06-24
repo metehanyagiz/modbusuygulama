@@ -579,30 +579,7 @@ namespace modbusuygulama
 
                 if (openfiledialog.ShowDialog() == DialogResult.OK)
                 {
-                    string filepath = openfiledialog.FileName;
-
-
-                    using (FileStream fstrm =new FileStream(filepath, FileMode.Open, FileAccess.Read))
-                    {
-                        byte[] first54 = new byte[54];
-                        fstrm.Read(first54, 0, 54);
-
-                        string response = sendbytes(first54);
-
-                        if (response == "ACCEPTED")
-                        {
-                            sendotherbytes(fstrm);
-                        }
-                        else
-                        {
-
-                            groupBox3.BackColor = Color.Red;
-                            lblconnection.Text = "Disconnected";
-                        }
-
-                    }
-
-
+                    txtfilepath.Text = openfiledialog.FileName;
                 }
                
             }
@@ -654,9 +631,40 @@ namespace modbusuygulama
         {
             txtport_tcp.Text = string.Empty;
             txtip_tcp.Text = string.Empty;
+            txtfilepath.Text = string.Empty;
         }
 
-     
+        private void btnsend_Click(object sender, EventArgs e)
+        {
+            string filepath = txtfilepath.Text;
+
+
+            using (FileStream fstrm = new FileStream(filepath, FileMode.Open, FileAccess.Read))
+            {
+                byte[] first54 = new byte[54];
+                fstrm.Read(first54, 0, 54);
+
+                string response = sendbytes(first54);
+
+                if (response == "ACCEPTED")
+                {
+                    sendotherbytes(fstrm);
+                }
+                else
+                {
+
+                    groupBox3.BackColor = Color.Red;
+                    lblconnection.Text = "Disconnected";
+                }
+
+            }
+        }
+
+        private void txtfilepath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 
 }
