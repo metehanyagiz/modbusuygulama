@@ -612,13 +612,14 @@ namespace modbusuygulama
         {
             try
             {
+                fstrm.Seek(54,SeekOrigin.Begin);
                 byte[] buffer = new byte[1024];
                 int byteread;
 
                 while((byteread=fstrm.Read(buffer, 0, buffer.Length)) > 0)
                 {
                     stream.Write(buffer, 0, byteread);
-                    Thread.Sleep(300);
+                    Thread.Sleep(300);                    
                 }
             }
             catch (Exception ex)
