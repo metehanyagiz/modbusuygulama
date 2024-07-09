@@ -29,6 +29,8 @@ namespace modbusuygulama
             lblconnection.Text = "Disconnected";
             this.FormClosing += new FormClosingEventHandler(Form1_Load);
             this.Load += new EventHandler(Form1_Load);
+            this.tabControl1.SelectedIndexChanged += new EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.Shown += new EventHandler(this.Form1_Shown);
             tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
         }
 
@@ -78,8 +80,9 @@ namespace modbusuygulama
             txtstartadd.Text = Properties.Settings.Default.startadresi;
             txtip_tcp.Text = Properties.Settings.Default.iptcp;
             txtport_tcp.Text = Properties.Settings.Default.porttcp;
-
             txtmainwrite.Text = Properties.Settings.Default.anadegerler;
+
+
         }
 
         private void combochannel_SelectedIndexChanged(object sender, EventArgs e)
@@ -672,6 +675,28 @@ namespace modbusuygulama
 
         }
 
+ 
+        //yükleyince ip kutusuna odaklanma
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+           txtipaddress.Focus();
+        }
+
+        //sekme değiştirince ip kutusunu seçme
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0:
+                    txtipaddress.Focus();
+                    break;
+                case 2:
+                    txtip_tcp.Focus();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
 }
