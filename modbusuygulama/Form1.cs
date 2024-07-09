@@ -255,51 +255,17 @@ namespace modbusuygulama
                 stream.Close();
             if(tcpClient!= null) 
                 tcpClient.Close();
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                var result = MessageBox.Show("Do you want to keep your current values for next time?", "Save Settings", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
+            Properties.Settings.Default.anadegerler = txtmainwrite.Text;
+            Properties.Settings.Default.ipadresi = txtipaddress.Text;
+            Properties.Settings.Default.portdeger = txtport.Text;
+            Properties.Settings.Default.anaadres = txtaddressbox.Text;
+            Properties.Settings.Default.numberofpoi = txtnopoint.Text;
+            Properties.Settings.Default.startadresi = txtstartadd.Text;
+            Properties.Settings.Default.iptcp = txtip_tcp.Text;
+            Properties.Settings.Default.porttcp = txtport_tcp.Text;
 
-                    Properties.Settings.Default.anadegerler = txtmainwrite.Text;
-                    Properties.Settings.Default.ipadresi = txtipaddress.Text;
-                    Properties.Settings.Default.portdeger = txtport.Text;
-                    Properties.Settings.Default.anaadres = txtaddressbox.Text;
-                    Properties.Settings.Default.numberofpoi=txtnopoint.Text;
-                    Properties.Settings.Default.startadresi=txtstartadd.Text;
-                    Properties.Settings.Default.iptcp = txtip_tcp.Text;
-                    Properties.Settings.Default.porttcp = txtport_tcp.Text;
-
-                    Properties.Settings.Default.Save();
-                }
-                else
-                {
-                    Properties.Settings.Default.anadegerler = null;
-                    Properties.Settings.Default.ipadresi = null;
-                    Properties.Settings.Default.portdeger = null;
-                    Properties.Settings.Default.anaadres=null;
-                    Properties.Settings.Default.numberofpoi = null;
-                    Properties.Settings.Default.startadresi = null;
-                    Properties.Settings.Default.iptcp = null;
-                    Properties.Settings.Default.porttcp = null;
-
-                    Properties.Settings.Default.Save();
-                }
-            }
-            else
-            {
-                Properties.Settings.Default.anadegerler = txtmainwrite.Text;
-                Properties.Settings.Default.ipadresi = txtipaddress.Text;
-                Properties.Settings.Default.portdeger = txtport.Text;
-                Properties.Settings.Default.anaadres = txtaddressbox.Text;
-                Properties.Settings.Default.numberofpoi = txtnopoint.Text;
-                Properties.Settings.Default.startadresi = txtstartadd.Text;
-                Properties.Settings.Default.iptcp= txtip_tcp.Text;
-                Properties.Settings.Default.porttcp=txtport_tcp.Text;
-
-
-                Properties.Settings.Default.Save();
-            }
+            Properties.Settings.Default.Save();
+            
         }
             
 
