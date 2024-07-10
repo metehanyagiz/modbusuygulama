@@ -33,18 +33,6 @@
             this.lblipaddress = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblconnection = new System.Windows.Forms.Label();
-            this.combochannel = new System.Windows.Forms.ComboBox();
-            this.comboaddress = new System.Windows.Forms.ComboBox();
-            this.btndebug = new System.Windows.Forms.Button();
-            this.btnlog = new System.Windows.Forms.Button();
-            this.btnmaestrofw = new System.Windows.Forms.Button();
-            this.lbldeviceinfo = new System.Windows.Forms.Label();
-            this.combocommand = new System.Windows.Forms.ComboBox();
-            this.comboquery = new System.Windows.Forms.ComboBox();
-            this.btndriverfw = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnconnect = new System.Windows.Forms.Button();
@@ -78,23 +66,6 @@
             this.txtaddressbox = new System.Windows.Forms.TextBox();
             this.txtmainwrite = new System.Windows.Forms.TextBox();
             this.btnmainwrite = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.txtfilepath = new System.Windows.Forms.TextBox();
-            this.btnsend = new System.Windows.Forms.Button();
-            this.btnresettcp = new System.Windows.Forms.Button();
-            this.btnreadfile = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btndisconnect_tcp = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnconnect_tcp = new System.Windows.Forms.Button();
-            this.txtip_tcp = new System.Windows.Forms.TextBox();
-            this.txtport_tcp = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -103,9 +74,6 @@
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -144,157 +112,6 @@
             this.lblconnection.TabIndex = 3;
             this.lblconnection.Text = "Connected/Disconnected";
             this.lblconnection.Click += new System.EventHandler(this.lblconnection_Click);
-            // 
-            // combochannel
-            // 
-            this.combochannel.FormattingEnabled = true;
-            this.combochannel.Items.AddRange(new object[] {
-            "Channel 1",
-            "Channel 2",
-            "Channel 3",
-            "Channel 4",
-            "Channel 5",
-            "Channel 6",
-            "Channel 7",
-            "Channel 8",
-            "Channel 9"});
-            this.combochannel.Location = new System.Drawing.Point(6, 21);
-            this.combochannel.Name = "combochannel";
-            this.combochannel.Size = new System.Drawing.Size(121, 24);
-            this.combochannel.TabIndex = 4;
-            this.combochannel.Text = "Channel";
-            this.combochannel.SelectedIndexChanged += new System.EventHandler(this.combochannel_SelectedIndexChanged);
-            // 
-            // comboaddress
-            // 
-            this.comboaddress.FormattingEnabled = true;
-            this.comboaddress.Items.AddRange(new object[] {
-            "Address 1",
-            "Address 2",
-            "Address 3",
-            "Address 4",
-            "Address 5",
-            "Address 6",
-            "Address 7",
-            "Address 8",
-            "Address 9"});
-            this.comboaddress.Location = new System.Drawing.Point(138, 21);
-            this.comboaddress.Name = "comboaddress";
-            this.comboaddress.Size = new System.Drawing.Size(121, 24);
-            this.comboaddress.TabIndex = 5;
-            this.comboaddress.Text = "Address";
-            // 
-            // btndebug
-            // 
-            this.btndebug.Location = new System.Drawing.Point(22, 116);
-            this.btndebug.Name = "btndebug";
-            this.btndebug.Size = new System.Drawing.Size(146, 23);
-            this.btndebug.TabIndex = 6;
-            this.btndebug.Text = "Debug Mode";
-            this.btndebug.UseVisualStyleBackColor = true;
-            // 
-            // btnlog
-            // 
-            this.btnlog.Location = new System.Drawing.Point(22, 145);
-            this.btnlog.Name = "btnlog";
-            this.btnlog.Size = new System.Drawing.Size(146, 23);
-            this.btnlog.TabIndex = 7;
-            this.btnlog.Text = "Retrieve Logs";
-            this.btnlog.UseVisualStyleBackColor = true;
-            // 
-            // btnmaestrofw
-            // 
-            this.btnmaestrofw.Location = new System.Drawing.Point(22, 174);
-            this.btnmaestrofw.Name = "btnmaestrofw";
-            this.btnmaestrofw.Size = new System.Drawing.Size(146, 23);
-            this.btnmaestrofw.TabIndex = 8;
-            this.btnmaestrofw.Text = "Update Maestro FW";
-            this.btnmaestrofw.UseVisualStyleBackColor = true;
-            // 
-            // lbldeviceinfo
-            // 
-            this.lbldeviceinfo.AutoSize = true;
-            this.lbldeviceinfo.Location = new System.Drawing.Point(6, 71);
-            this.lbldeviceinfo.Name = "lbldeviceinfo";
-            this.lbldeviceinfo.Size = new System.Drawing.Size(121, 16);
-            this.lbldeviceinfo.TabIndex = 9;
-            this.lbldeviceinfo.Text = "Device Information:";
-            // 
-            // combocommand
-            // 
-            this.combocommand.BackColor = System.Drawing.Color.DarkGreen;
-            this.combocommand.ForeColor = System.Drawing.Color.Azure;
-            this.combocommand.FormattingEnabled = true;
-            this.combocommand.Items.AddRange(new object[] {
-            "XX",
-            "YY",
-            "ZZ"});
-            this.combocommand.Location = new System.Drawing.Point(9, 178);
-            this.combocommand.Name = "combocommand";
-            this.combocommand.Size = new System.Drawing.Size(96, 24);
-            this.combocommand.TabIndex = 10;
-            this.combocommand.Text = "Command";
-            // 
-            // comboquery
-            // 
-            this.comboquery.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.comboquery.ForeColor = System.Drawing.Color.Azure;
-            this.comboquery.FormattingEnabled = true;
-            this.comboquery.Items.AddRange(new object[] {
-            "XX",
-            "YY",
-            "ZZ"});
-            this.comboquery.Location = new System.Drawing.Point(151, 178);
-            this.comboquery.Name = "comboquery";
-            this.comboquery.Size = new System.Drawing.Size(77, 24);
-            this.comboquery.TabIndex = 11;
-            this.comboquery.Text = "Query";
-            // 
-            // btndriverfw
-            // 
-            this.btndriverfw.Location = new System.Drawing.Point(62, 225);
-            this.btndriverfw.Name = "btndriverfw";
-            this.btndriverfw.Size = new System.Drawing.Size(137, 23);
-            this.btndriverfw.TabIndex = 13;
-            this.btndriverfw.Text = "Update Driver FW";
-            this.btndriverfw.UseVisualStyleBackColor = true;
-            this.btndriverfw.Click += new System.EventHandler(this.btndriverfw_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 16);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Maestro Information";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btndebug);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.btnlog);
-            this.groupBox1.Controls.Add(this.btnmaestrofw);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox1.Location = new System.Drawing.Point(31, 19);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 220);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.comboquery);
-            this.groupBox2.Controls.Add(this.combocommand);
-            this.groupBox2.Controls.Add(this.combochannel);
-            this.groupBox2.Controls.Add(this.comboaddress);
-            this.groupBox2.Controls.Add(this.lbldeviceinfo);
-            this.groupBox2.Controls.Add(this.btndriverfw);
-            this.groupBox2.Location = new System.Drawing.Point(297, 28);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(265, 271);
-            this.groupBox2.TabIndex = 16;
-            this.groupBox2.TabStop = false;
             // 
             // groupBox3
             // 
@@ -571,8 +388,6 @@
             // 
             this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.ItemSize = new System.Drawing.Size(25, 100);
             this.tabControl1.Location = new System.Drawing.Point(12, 61);
@@ -674,163 +489,6 @@
             this.btnmainwrite.UseVisualStyleBackColor = true;
             this.btnmainwrite.Click += new System.EventHandler(this.btnmainwrite_Click);
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Location = new System.Drawing.Point(104, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(864, 681);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "MAESTRO";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.richTextBox1);
-            this.tabPage3.Controls.Add(this.txtfilepath);
-            this.tabPage3.Controls.Add(this.btnsend);
-            this.tabPage3.Controls.Add(this.btnresettcp);
-            this.tabPage3.Controls.Add(this.btnreadfile);
-            this.tabPage3.Controls.Add(this.groupBox6);
-            this.tabPage3.Location = new System.Drawing.Point(104, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(864, 681);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "TCP";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(652, 179);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(100, 96);
-            this.richTextBox1.TabIndex = 37;
-            this.richTextBox1.Text = "";
-            // 
-            // txtfilepath
-            // 
-            this.txtfilepath.Location = new System.Drawing.Point(209, 301);
-            this.txtfilepath.Name = "txtfilepath";
-            this.txtfilepath.Size = new System.Drawing.Size(226, 22);
-            this.txtfilepath.TabIndex = 36;
-            this.txtfilepath.TextChanged += new System.EventHandler(this.txtfilepath_TextChanged);
-            // 
-            // btnsend
-            // 
-            this.btnsend.BackColor = System.Drawing.Color.Coral;
-            this.btnsend.Location = new System.Drawing.Point(29, 369);
-            this.btnsend.Name = "btnsend";
-            this.btnsend.Size = new System.Drawing.Size(141, 72);
-            this.btnsend.TabIndex = 35;
-            this.btnsend.Text = "Send";
-            this.btnsend.UseVisualStyleBackColor = false;
-            this.btnsend.Click += new System.EventHandler(this.btnsend_Click);
-            // 
-            // btnresettcp
-            // 
-            this.btnresettcp.BackColor = System.Drawing.Color.Yellow;
-            this.btnresettcp.Location = new System.Drawing.Point(245, 369);
-            this.btnresettcp.Name = "btnresettcp";
-            this.btnresettcp.Size = new System.Drawing.Size(145, 74);
-            this.btnresettcp.TabIndex = 34;
-            this.btnresettcp.Text = "Reset";
-            this.btnresettcp.UseVisualStyleBackColor = false;
-            this.btnresettcp.Click += new System.EventHandler(this.btnresettcp_Click);
-            // 
-            // btnreadfile
-            // 
-            this.btnreadfile.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnreadfile.Location = new System.Drawing.Point(29, 289);
-            this.btnreadfile.Name = "btnreadfile";
-            this.btnreadfile.Size = new System.Drawing.Size(145, 74);
-            this.btnreadfile.TabIndex = 33;
-            this.btnreadfile.Text = "Choose file";
-            this.btnreadfile.UseVisualStyleBackColor = false;
-            this.btnreadfile.Click += new System.EventHandler(this.btnreadfile_Click);
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.btndisconnect_tcp);
-            this.groupBox6.Controls.Add(this.label5);
-            this.groupBox6.Controls.Add(this.btnconnect_tcp);
-            this.groupBox6.Controls.Add(this.txtip_tcp);
-            this.groupBox6.Controls.Add(this.txtport_tcp);
-            this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.label9);
-            this.groupBox6.Location = new System.Drawing.Point(29, 60);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(361, 192);
-            this.groupBox6.TabIndex = 32;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Connect";
-            // 
-            // btndisconnect_tcp
-            // 
-            this.btndisconnect_tcp.BackColor = System.Drawing.Color.Red;
-            this.btndisconnect_tcp.Location = new System.Drawing.Point(217, 119);
-            this.btndisconnect_tcp.Name = "btndisconnect_tcp";
-            this.btndisconnect_tcp.Size = new System.Drawing.Size(98, 54);
-            this.btndisconnect_tcp.TabIndex = 47;
-            this.btndisconnect_tcp.Text = "Disconnect";
-            this.btndisconnect_tcp.UseVisualStyleBackColor = false;
-            this.btndisconnect_tcp.Click += new System.EventHandler(this.btndisconnect_tcp_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(236, 16);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Enter necessary information to connect";
-            // 
-            // btnconnect_tcp
-            // 
-            this.btnconnect_tcp.BackColor = System.Drawing.Color.Green;
-            this.btnconnect_tcp.Location = new System.Drawing.Point(41, 119);
-            this.btnconnect_tcp.Name = "btnconnect_tcp";
-            this.btnconnect_tcp.Size = new System.Drawing.Size(100, 54);
-            this.btnconnect_tcp.TabIndex = 9;
-            this.btnconnect_tcp.Text = "Connect";
-            this.btnconnect_tcp.UseVisualStyleBackColor = false;
-            this.btnconnect_tcp.Click += new System.EventHandler(this.btnconnect_tcp_Click);
-            // 
-            // txtip_tcp
-            // 
-            this.txtip_tcp.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtip_tcp.Location = new System.Drawing.Point(41, 76);
-            this.txtip_tcp.Name = "txtip_tcp";
-            this.txtip_tcp.Size = new System.Drawing.Size(100, 22);
-            this.txtip_tcp.TabIndex = 4;
-            this.txtip_tcp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtport_tcp
-            // 
-            this.txtport_tcp.Location = new System.Drawing.Point(217, 76);
-            this.txtport_tcp.Name = "txtport_tcp";
-            this.txtport_tcp.Size = new System.Drawing.Size(98, 22);
-            this.txtport_tcp.TabIndex = 5;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 76);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(25, 16);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "IP :";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(174, 76);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 16);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "Port :";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -847,10 +505,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -864,11 +518,6 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -879,18 +528,6 @@
         private System.Windows.Forms.Label lblipaddress;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblconnection;
-        private System.Windows.Forms.ComboBox combochannel;
-        private System.Windows.Forms.ComboBox comboaddress;
-        private System.Windows.Forms.Button btndebug;
-        private System.Windows.Forms.Button btnlog;
-        private System.Windows.Forms.Button btnmaestrofw;
-        private System.Windows.Forms.Label lbldeviceinfo;
-        private System.Windows.Forms.ComboBox combocommand;
-        private System.Windows.Forms.ComboBox comboquery;
-        private System.Windows.Forms.Button btndriverfw;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnconnect;
@@ -915,7 +552,6 @@
         private System.Windows.Forms.Button txtclear;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btndisconnect;
         private System.Windows.Forms.TextBox txtmainwrite;
@@ -925,20 +561,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnreset;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button btndisconnect_tcp;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnconnect_tcp;
-        private System.Windows.Forms.TextBox txtip_tcp;
-        private System.Windows.Forms.TextBox txtport_tcp;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnreadfile;
-        private System.Windows.Forms.Button btnresettcp;
-        private System.Windows.Forms.Button btnsend;
-        private System.Windows.Forms.TextBox txtfilepath;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
