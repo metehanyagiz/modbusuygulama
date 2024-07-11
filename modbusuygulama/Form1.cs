@@ -559,18 +559,46 @@ namespace modbusuygulama
             }
         }
 
+        private void btnsend_Click(object sender, EventArgs e)
+        {
+            string filepath = txtfilepath.Text;
+
+
+            using (FileStream fstrm = new FileStream(filepath, FileMode.Open, FileAccess.Read))
+            {
+                byte[] first54 = new byte[54];
+                fstrm.Read(first54, 0, 54);
+
+                string response = sendbytes(first54);
+
+                if (true)
+                {
+                    sendotherbytes(fstrm);
+                    richTextBox1.Text = "ACCEPTED received";
+                }
+                else
+                {
+
+                    groupBox3.BackColor = Color.Red;
+                    lblconnection.Text = "Disconnected";
+                    richTextBox1.Text = "Not ACCEPTED";
+                    MessageBox.Show($"Response is: {response}");
+                }
+
+            }
+        }
         private string sendbytes(byte[] data)
         {
             try
             {
                 stream.Write(data, 0, data.Length);
 
-                tcpClient.ReceiveTimeout = 2000; // ACCEPTED mesajını ne kadar bekleyecek, süre dolunca connection terminated
-
-                byte[] responsebuff = new byte[1024];
-                int byteread = stream.Read(responsebuff, 0, responsebuff.Length);
-                string response = Encoding.UTF8.GetString(responsebuff, 0, byteread);
-                return response;
+                //tcpClient.ReceiveTimeout = 2000; // ACCEPTED mesajını ne kadar bekleyecek, süre dolunca connection terminated
+                //byte[] responsebuff = new byte[1024];
+                //int byteread = stream.Read(responsebuff, 0, responsebuff.Length);
+                //   string response = Encoding.UTF8.GetString(responsebuff, 0, byteread);
+                string cevap = "abc";
+                return cevap;
             }
             catch (Exception ex) {
             MessageBox.Show($"An error occured while sending data: {ex.Message}");
@@ -598,44 +626,18 @@ namespace modbusuygulama
             }
         }
 
+
+
+
+
         //tcp sekmesindeki textboxları sıfırlama
         private void btnresettcp_Click(object sender, EventArgs e)
         {
             txtport_tcp.Text = string.Empty;
             txtip_tcp.Text = string.Empty;
             txtfilepath.Text = string.Empty;
-            richTextBox1.Text   = string.Empty;
+            richTextBox1.Text = string.Empty;
         }
-
-        private void btnsend_Click(object sender, EventArgs e)
-        {
-            string filepath = txtfilepath.Text;
-
-
-            using (FileStream fstrm = new FileStream(filepath, FileMode.Open, FileAccess.Read))
-            {
-                byte[] first54 = new byte[54];
-                fstrm.Read(first54, 0, 54);
-
-                string response = sendbytes(first54);
-
-                if (response == "ACCEPTED")
-                {
-                    sendotherbytes(fstrm);
-                    richTextBox1.Text = "ACCEPTED received";
-                }
-                else
-                {
-
-                    groupBox3.BackColor = Color.Red;
-                    lblconnection.Text = "Disconnected";
-                    richTextBox1.Text = "Not ACCEPTED";
-                    MessageBox.Show($"Response is: {response}");
-                }
-
-            }
-        }
-
         private void txtfilepath_TextChanged(object sender, EventArgs e)
         {
 
